@@ -1,6 +1,7 @@
 package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
+import com.example.nav_router.NavRouterPlugin;
 
 /**
  * Generated file. Do not edit.
@@ -10,6 +11,7 @@ public final class GeneratedPluginRegistrant {
     if (alreadyRegisteredWith(registry)) {
       return;
     }
+    NavRouterPlugin.registerWith(registry.registrarFor("com.example.nav_router.NavRouterPlugin"));
   }
 
   private static boolean alreadyRegisteredWith(PluginRegistry registry) {
