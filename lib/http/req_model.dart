@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:ncov_2019/commom/commom.dart';
+import 'package:ncov_2019/http/config.dart';
 
 var _id = 0;
 
@@ -69,12 +72,14 @@ class ReqModel {
   }) async {
     Dio _client;
 
+    final httpUrl = '$reqUrl$url';
+
     if (_client == null) {
       BaseOptions options = new BaseOptions();
       options.connectTimeout = connectTimeOut;
       options.receiveTimeout = receiveTimeOut;
       options.headers = const {'Content-Type': 'application/json'};
-      options.baseUrl = 'http://49.232.173.220:3001';
+      options.baseUrl = reqUrl;
       _client = new Dio(options);
     }
 
@@ -111,10 +116,9 @@ class ReqModel {
       statusCode = response.statusCode;
 
       if (response != null) {
-        print('HTTP_REQUEST_URL::[$id]::$url');
-        if (mapNoEmpty(params))
-          print('HTTP_REQUEST_BODY::[$id]::${params ?? ' no'}');
-        print('HTTP_RESPONSE_BODY::[$id]::${response}');
+        print('HTTP_REQUEST_URL::[$id]::$httpUrl');
+        if (mapNoEmpty(params)) print('HTTP_REQUEST_BODY::[$id]::$params');
+        print('HTTP_RESPONSE_BODY::[$id]::${json.encode(response.data)}');
         return response.data;
       }
 
