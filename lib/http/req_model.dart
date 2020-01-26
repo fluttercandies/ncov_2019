@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:ncov_2019/commom/commom.dart';
 import 'package:ncov_2019/http/config.dart';
 
+// 请求计数
 var _id = 0;
 
 /*
@@ -18,8 +19,10 @@ class ReqModel {
   ///响应超时时间为7秒
   static const int receiveTimeOut = 7 * 1000;
 
+  // 请求url路径
   String url() => null;
 
+  // 请求参数
   Map params() => {};
 
   /*

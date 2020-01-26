@@ -1,5 +1,8 @@
 import 'package:ncov_2019/http/req_model.dart';
 
+/*
+* 按时间线获取事件 - 请求
+* */
 class TimeNewsReqModel extends ReqModel {
   @override
   String url() => '/data/getTimelineService';
@@ -11,7 +14,19 @@ class TimeNewsReqModel extends ReqModel {
 }
 
 /*
-* 按时间线获取事件
+* 按时间线获取事件 - 响应
+*
+* @param summary 概要
+* @param sourceUrl 原文Url
+* @param modifyTime 更新时间
+* @param createTime 创建时间
+* @param id 事件Id
+* @param provinceName 省份名称
+* @param title 标题
+* @param pubDate 发布日期时间戳
+* @param pubDateStr 发布日期文本
+* @param provinceId 地区编号
+* @param infoSource 信息来源
 * */
 class TimeNewsModel {
   String summary;
