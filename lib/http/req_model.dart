@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:ncov_2019/api/home_model.dart';
 import 'package:ncov_2019/commom/commom.dart';
 
 var _id = 0;
@@ -11,7 +8,7 @@ var _id = 0;
 * */
 enum RequestType { GET, POST }
 
-class Req {
+class ReqModel {
   ///连接超时时间为5秒
   static const int connectTimeOut = 5 * 1000;
 
@@ -20,13 +17,16 @@ class Req {
 
   String url() => null;
 
+  Map params() => {};
+
   /*
   * get请求
   * */
-  Future get() async {
+  Future<dynamic> get() async {
     return this._request(
       url: url(),
       method: RequestType.GET,
+      params: params(),
     );
   }
 
@@ -37,6 +37,7 @@ class Req {
     return this._request(
       url: url(),
       method: RequestType.POST,
+      params: params(),
     );
   }
 
@@ -52,6 +53,7 @@ class Req {
       method: RequestType.POST,
       formData: formData,
       progressCallBack: progressCallBack,
+      params: params(),
     );
   }
 
@@ -72,6 +74,7 @@ class Req {
       options.connectTimeout = connectTimeOut;
       options.receiveTimeout = receiveTimeOut;
       options.headers = const {'Content-Type': 'application/json'};
+      options.baseUrl = 'http://49.232.173.220:3001';
       _client = new Dio(options);
     }
 
@@ -84,7 +87,7 @@ class Req {
         if (mapNoEmpty(params)) {
           response = await _client.get(
             url,
-//            queryParameters: requstBody,
+            queryParameters: params,
           );
         } else {
           response = await _client.get(
@@ -95,7 +98,7 @@ class Req {
         if (mapNoEmpty(params) && formData.isNotEmpty) {
           response = await _client.post(
             url,
-//            data: formData ?? requstBody,
+            data: formData ?? params,
             onSendProgress: progressCallBack,
           );
         } else {
@@ -109,9 +112,9 @@ class Req {
 
       if (response != null) {
         print('HTTP_REQUEST_URL::[$id]::$url');
-//        if (mapNoEmpty(requstBody))
-//          print('HTTP_REQUEST_BODY::[$id]::${requstBody ?? ' no'}');
-        print('HTTP_RESPONSE_BODY::[$id]::${response.data}');
+        if (mapNoEmpty(params))
+          print('HTTP_REQUEST_BODY::[$id]::${params ?? ' no'}');
+        print('HTTP_RESPONSE_BODY::[$id]::${response}');
         return response.data;
       }
 

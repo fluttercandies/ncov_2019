@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nav_router/nav_router.dart';
-import 'package:ncov_2019/api/home.dart';
+import 'package:ncov_2019/api/news_view_model.dart';
 
 void main() {
   runApp(new MyApp());
@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
             new MaterialButton(
               child: new Text('测试请求'),
               onPressed: () {
-                HomeViewModel().testViewModel();
+                TimeNewsViewModel().getTimeNews();
               },
             )
           ],
