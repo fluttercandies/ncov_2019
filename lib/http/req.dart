@@ -9,156 +9,113 @@ typedef OnError(String msg, int code);
 enum RequestType { GET, POST }
 
 class Req {
-  static Req _instance;
-
   ///连接超时时间为5秒
   static const int connectTimeOut = 5 * 1000;
 
   ///响应超时时间为7秒
   static const int receiveTimeOut = 7 * 1000;
 
-  Dio _client;
 
-  static Req getInstance() {
-    if (_instance == null) {
-      _instance = Req._internal();
-    }
-    return _instance;
+  String url() => null;
+
+  ///get请求
+  Future get({
+    Map<String, String> params,
+  }) async {
+    return this._request(
+      method: RequestType.GET,
+      params: params,
+    );
   }
 
-  Req._internal() {
+  //post请求
+  Future post({
+    Map<String, String> params,
+  }) async {
+    return this._request(
+      method: RequestType.POST,
+      params: params,
+    );
+  }
+
+  //post请求
+  Future postUpload(
+    ProgressCallback progressCallBack, {
+    FormData formData,
+  }) async {
+    return this._request(
+      method: RequestType.POST,
+      formData: formData,
+      progressCallBack: progressCallBack,
+    );
+  }
+
+  Future _request({
+    RequestType method,
+    Map<String, String> params,
+    FormData formData,
+    ProgressCallback progressCallBack,
+  }) async {
+    Dio _client;
+
     if (_client == null) {
       BaseOptions options = new BaseOptions();
       options.connectTimeout = connectTimeOut;
       options.receiveTimeout = receiveTimeOut;
       _client = new Dio(options);
     }
-  }
 
-  Dio get client => _client;
-
-  ///get请求
-  void get(
-    String url,
-    OnData callBack, {
-    Map<String, String> params,
-    OnError errorCallBack,
-    CancelToken token,
-  }) async {
-    this._request(
-      url,
-      callBack,
-      method: RequestType.GET,
-      params: params,
-      errorCallBack: errorCallBack,
-      token: token,
-    );
-  }
-
-  //post请求
-  void post(
-    String url,
-    OnData callBack, {
-    Map<String, String> params,
-    OnError errorCallBack,
-    CancelToken token,
-  }) async {
-    this._request(
-      url,
-      callBack,
-      method: RequestType.POST,
-      params: params,
-      errorCallBack: errorCallBack,
-      token: token,
-    );
-  }
-
-  //post请求
-  void postUpload(
-    String url,
-    OnData callBack,
-    ProgressCallback progressCallBack, {
-    FormData formData,
-    OnError errorCallBack,
-    CancelToken token,
-  }) async {
-    this._request(
-      url,
-      callBack,
-      method: RequestType.POST,
-      formData: formData,
-      errorCallBack: errorCallBack,
-      progressCallBack: progressCallBack,
-      token: token,
-    );
-  }
-
-  void _request(
-    String url,
-    OnData callBack, {
-    RequestType method,
-    Map<String, String> params,
-    FormData formData,
-    OnError errorCallBack,
-    ProgressCallback progressCallBack,
-    CancelToken token,
-  }) async {
     final id = _id++;
     int statusCode;
     try {
       Response response;
+      print('进入请求啊啊啊');
       if (method == RequestType.GET) {
+        print('进入请求get');
         ///组合GET请求的参数
         if (mapNoEmpty(params)) {
-          response = await _client.get(url,
-              queryParameters: params, cancelToken: token);
+          response = await _client.get(url(),
+              queryParameters: params, );
         } else {
-          response = await _client.get(url, cancelToken: token);
+          response = await _client.get(url(), );
         }
       } else {
-        if (mapNoEmpty(params) || formData.isNotEmpty) {
+        print('进入请求');
+        if (mapNoEmpty(params) && formData.isNotEmpty) {
           response = await _client.post(
-            url,
+            url(),
             data: formData ?? params,
             onSendProgress: progressCallBack,
-            cancelToken: token,
           );
         } else {
-          response = await _client.post(url, cancelToken: token);
+          response = await _client.post(url(), );
         }
       }
 
       statusCode = response.statusCode;
 
       if (response != null) {
-        if (response.data is List) {
-          Map data = response.data[0];
-          callBack(data);
-        } else {
-          Map data = response.data;
-          callBack(data);
-        }
         print('HTTP_REQUEST_URL::[$id]::$url');
         print('HTTP_REQUEST_BODY::[$id]::${params ?? ' no'}');
         print('HTTP_RESPONSE_BODY::[$id]::${response.data}');
+        return response.data;
       }
 
       ///处理错误部分
       if (statusCode < 0) {
-        _handError(errorCallBack, statusCode);
-        return;
+        return _handError(statusCode);
       }
     } catch (e) {
-      _handError(errorCallBack, statusCode);
+      return _handError(statusCode);
     }
   }
 
   ///处理异常
-  static void _handError(OnError errorCallback, int statusCode) {
+  static Future _handError(int statusCode) {
     String errorMsg = 'Network request error';
-    if (errorCallback != null) {
-      errorCallback(errorMsg, statusCode);
-    }
+    Map errorMap = {"errorMsg": errorMsg, "errorCode": statusCode};
+
     print("HTTP_RESPONSE_ERROR::$errorMsg code:$statusCode");
+    return Future.value(errorMap);
   }
 }

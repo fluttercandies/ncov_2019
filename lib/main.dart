@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nav_router/nav_router.dart';
+import 'package:ncov_2019/api/home.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(new MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -33,6 +36,12 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'You have pushed the button this many times:',
             ),
+            new MaterialButton(
+              child: new Text('测试请求'),
+              onPressed: () {
+                HomeViewModel().test();
+              },
+            )
           ],
         ),
       ),
