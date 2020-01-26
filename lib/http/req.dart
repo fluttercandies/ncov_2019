@@ -1,11 +1,14 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
+import 'package:ncov_2019/api/home_model.dart';
 import 'package:ncov_2019/commom/commom.dart';
 
 var _id = 0;
 
-typedef OnData(t);
-typedef OnError(String msg, int code);
-
+/*
+* 请求类型枚举
+* */
 enum RequestType { GET, POST }
 
 class Req {
@@ -15,44 +18,50 @@ class Req {
   ///响应超时时间为7秒
   static const int receiveTimeOut = 7 * 1000;
 
-
   String url() => null;
 
-  ///get请求
-  Future get({
-    Map<String, String> params,
-  }) async {
+  /*
+  * get请求
+  * */
+  Future get() async {
     return this._request(
+      url: url(),
       method: RequestType.GET,
-      params: params,
     );
   }
 
-  //post请求
-  Future post({
-    Map<String, String> params,
-  }) async {
+  /*
+  * post请求
+  * */
+  Future post() async {
     return this._request(
+      url: url(),
       method: RequestType.POST,
-      params: params,
     );
   }
 
-  //post请求
+  /*
+  * post请求-文件上传方式
+  * */
   Future postUpload(
     ProgressCallback progressCallBack, {
     FormData formData,
   }) async {
     return this._request(
+      url: url(),
       method: RequestType.POST,
       formData: formData,
       progressCallBack: progressCallBack,
     );
   }
 
+  /*
+  * 请求方法
+  * */
   Future _request({
+    String url,
     RequestType method,
-    Map<String, String> params,
+    Map params,
     FormData formData,
     ProgressCallback progressCallBack,
   }) async {
@@ -62,6 +71,7 @@ class Req {
       BaseOptions options = new BaseOptions();
       options.connectTimeout = connectTimeOut;
       options.receiveTimeout = receiveTimeOut;
+      options.headers = const {'Content-Type': 'application/json'};
       _client = new Dio(options);
     }
 
@@ -69,26 +79,29 @@ class Req {
     int statusCode;
     try {
       Response response;
-      print('进入请求啊啊啊');
       if (method == RequestType.GET) {
-        print('进入请求get');
         ///组合GET请求的参数
         if (mapNoEmpty(params)) {
-          response = await _client.get(url(),
-              queryParameters: params, );
+          response = await _client.get(
+            url,
+//            queryParameters: requstBody,
+          );
         } else {
-          response = await _client.get(url(), );
+          response = await _client.get(
+            url,
+          );
         }
       } else {
-        print('进入请求');
         if (mapNoEmpty(params) && formData.isNotEmpty) {
           response = await _client.post(
-            url(),
-            data: formData ?? params,
+            url,
+//            data: formData ?? requstBody,
             onSendProgress: progressCallBack,
           );
         } else {
-          response = await _client.post(url(), );
+          response = await _client.post(
+            url,
+          );
         }
       }
 
@@ -96,7 +109,8 @@ class Req {
 
       if (response != null) {
         print('HTTP_REQUEST_URL::[$id]::$url');
-        print('HTTP_REQUEST_BODY::[$id]::${params ?? ' no'}');
+//        if (mapNoEmpty(requstBody))
+//          print('HTTP_REQUEST_BODY::[$id]::${requstBody ?? ' no'}');
         print('HTTP_RESPONSE_BODY::[$id]::${response.data}');
         return response.data;
       }
