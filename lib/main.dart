@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
             new MaterialButton(
               child: new Text('测试请求'),
               onPressed: () {
-                TimeNewsViewModel().getTimeNews();
+                timeNewsViewModel.getTimeNews();
               },
             )
           ],
