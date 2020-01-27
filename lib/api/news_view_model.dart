@@ -14,6 +14,6 @@ class TimeNewsViewModel extends ViewModel {
 
     data.forEach((json) => list.add(TimeNewsModel.fromJson(json)));
 
-    return list;
+    return Future.value(list);
   }
 }
