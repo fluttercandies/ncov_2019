@@ -1,6 +1,7 @@
 import 'package:ncov_2019/api/rumor_model.dart';
 export 'package:ncov_2019/api/rumor_model.dart';
 import 'package:ncov_2019/http/view_model.dart';
+import 'package:ncov_2019/commom/commom.dart';
 
 RumorListReqViewModel rumorListReqViewModel = new RumorListReqViewModel();
 
@@ -13,7 +14,9 @@ class RumorListReqViewModel extends ViewModel {
 
     List list = new List();
 
-    data.forEach((json) => list.add(RumorListModel.fromJson(json)));
+    if (listNoEmpty(data)){
+      data.forEach((json) => list.add(RumorListModel.fromJson(json)));
+    }
 
     return Future.value(list);
   }

@@ -7,4 +7,7 @@ class API {
 
   // 最新辟谣
   static const getIndexRumorList = '/data/getIndexRumorList';
+
+  // 最新防护知识
+  static const getIndexRecommendList = '/data/getIndexRecommendList';
 }

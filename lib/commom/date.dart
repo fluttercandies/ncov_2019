@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class DateTimeForMater {
   static String full = "yyyy-MM-dd HH:mm:ss";
 
@@ -36,4 +38,26 @@ class DateTimeForMater {
     }
     return format;
   }
+}
+
+String formatTimeStampToString(timestamp, [format]) {
+  assert(timestamp != null);
+
+  int time = 0;
+
+  if (timestamp is int) {
+    time = timestamp;
+  } else {
+    time = int.parse(timestamp.toString());
+  }
+
+  if (format == null) {
+    format = 'yyyy-MM-dd HH:mm:ss';
+  }
+
+  DateFormat dateFormat = new DateFormat(format);
+
+  var date = new DateTime.fromMillisecondsSinceEpoch(time * 1000);
+
+  return dateFormat.format(date);
 }
