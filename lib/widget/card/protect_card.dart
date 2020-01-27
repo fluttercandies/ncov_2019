@@ -9,8 +9,9 @@ class ProtectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int createTime =
-        int.parse('${stringDisposeWithDouble(model?.createTime ?? 0 / 1000)}');
+    double createTimeDouble =
+        strNoEmpty('${model?.createTime}') ? model.createTime / 1000 : 0;
+    int createTime = int.parse('${stringDisposeWithDouble(createTimeDouble)}');
     return Container(
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: lineColor, width: 0.2)),
@@ -36,7 +37,7 @@ class ProtectCard extends StatelessWidget {
                     ),
                     new Space(height: 15.0),
                     new Text(
-                      '${formatTimeStampToString(createTime) ?? ''}',
+                      '${formatTimeStampToString(createTime) ?? '未知'}',
                       style: TextStyle(color: mainTextColor),
                     ),
                   ],

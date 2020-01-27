@@ -10,14 +10,20 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double createTimeDouble =
+        strNoEmpty('${model?.createTime}') ? model.createTime / 1000 : 0;
+    int createTime = int.parse('${stringDisposeWithDouble(createTimeDouble)}');
+    bool isTimeStr =
+        DateTime.now().millisecondsSinceEpoch - model?.createTime < 86400000;
     return Container(
       padding: padding,
       alignment: Alignment.centerLeft,
       width: winWidth(context),
       child: new FlatButton(
-        onPressed: () => routePush(new WebViewPage(
-            model?.sourceUrl ?? 'http://book.flutterj.com/',
-            '${model?.title ?? '未知'}')),
+        onPressed: () => routePush(
+          new WebViewPage(model?.sourceUrl ?? 'http://book.flutterj.com/',
+              '${model?.title ?? '未知'}'),
+        ),
         color: Colors.white,
         padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
         shape: RoundedRectangleBorder(
@@ -45,7 +51,7 @@ class NewsCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 new Text(
-                  '地区：${model?.provinceName ?? '未知'}',
+                  '时间：${isTimeStr ? model?.pubDateStr ?? '未知' : formatTimeStampToString(createTime) ?? '未知'}',
                   style: TextStyle(color: Color(0xff999999), fontSize: 13.0),
                 ),
                 new Text(
