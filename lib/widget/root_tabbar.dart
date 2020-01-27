@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ncov_2019/commom/commom.dart';
 import 'package:ncov_2019/config/const.dart';
 import 'package:ncov_2019/widget/scroll/my_behavior.dart';
 
@@ -55,6 +56,18 @@ class RootTabBarState extends State<RootTabBar> {
       elevation: 0,
     );
 
+    String title() {
+      if (currentIndex == 0) {
+        return '首页';
+      } else if (currentIndex == 1) {
+        return '辟谣';
+      } else if (currentIndex == 2) {
+        return '防护';
+      } else {
+        return '知识';
+      }
+    }
+
     return new Scaffold(
       bottomNavigationBar: new Theme(
         data: new ThemeData(
@@ -68,11 +81,28 @@ class RootTabBarState extends State<RootTabBar> {
           child: bottomNavigationBar,
         ),
       ),
+      appBar: new ComMomBar(
+        titleW: new AnimatedSwitcher(
+          duration: Duration(milliseconds: 400),
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            var tween = Tween<double>(begin: 0, end: 1);
+            return FadeTransition(
+              child: child,
+              opacity: tween.animate(animation),
+            );
+          },
+          child: new Text(
+            title() ?? '',
+            key: ValueKey(title() ?? ''),
+            style: TextStyle(color: Colors.white, fontSize: 20.0),
+          ),
+        ),
+      ),
       body: new ScrollConfiguration(
         behavior: MyBehavior(),
         child: new PageView.builder(
           itemBuilder: (BuildContext context, int index) =>
-          widget.pages[index].page,
+              widget.pages[index].page,
           controller: pageController,
           itemCount: pages.length,
           physics: Platform.isAndroid

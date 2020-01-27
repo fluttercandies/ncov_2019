@@ -63,7 +63,6 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     super.build(context);
     return new Scaffold(
-      appBar: new ComMomBar(title: '首页，数据条目${data.length}'),
       body: listNoEmpty(data)
           ? new SmartRefresher(
               controller: _refreshController,

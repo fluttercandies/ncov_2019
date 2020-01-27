@@ -9,8 +9,6 @@ class LorePage extends StatefulWidget {
 class _LorePageState extends State<LorePage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new ComMomBar(title: 'LorePage'),
-    );
+    return new Scaffold();
   }
 }
