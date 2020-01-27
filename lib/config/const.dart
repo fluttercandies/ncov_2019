@@ -4,7 +4,7 @@ const appBarColor = Color(0xff4169e2);
 
 const Color fixedColor = Colors.blue;
 
-const bgColor = Color.fromRGBO(255, 255, 255, 1);
+const bgColor = Color(0xfff7f7f7);
 
 const mainSpace = 10.0;
 
