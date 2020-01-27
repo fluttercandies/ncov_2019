@@ -13,4 +13,7 @@ class API {
 
   // 最新知识百科
   static const getWikiList = '/data/getWikiList';
+
+  // 获取整体统计信息
+  static const getStatisticsService = '/data/getStatisticsService';
 }

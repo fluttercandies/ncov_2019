@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: title,
       navigatorKey: navGK,
       theme: ThemeData(
-        indicatorColor: Color(0xff4169e2),
+        indicatorColor: appBarColor,
         scaffoldBackgroundColor: bgColor,
         hintColor: Colors.grey.withOpacity(0.3),
         splashColor: Colors.transparent,

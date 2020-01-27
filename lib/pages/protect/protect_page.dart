@@ -2,8 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:ncov_2019/api/protect_view_model.dart';
+import 'package:ncov_2019/api/statistics_view_model.dart';
 import 'package:ncov_2019/commom/commom.dart';
 import 'package:ncov_2019/widget/card/protect_card.dart';
+import 'package:ncov_2019/widget/item/statics.dart';
+import 'package:ncov_2019/widget/view/title_view.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ProtectPage extends StatefulWidget {
@@ -17,6 +20,7 @@ class _ProtectPageState extends State<ProtectPage>
       RefreshController(initialRefresh: false);
 
   List data = new List();
+  StatisticsModel statisticsModel = new StatisticsModel();
 
   @override
   void initState() {
@@ -34,6 +38,9 @@ class _ProtectPageState extends State<ProtectPage>
     protectViewModel.getData().then((v) {
       setState(() => data = v);
     });
+    statisticsViewModel.getData().then((v) {
+      setState(() => statisticsModel = v);
+    });
   }
 
   Future<void> _refreshData() async {
@@ -49,14 +56,14 @@ class _ProtectPageState extends State<ProtectPage>
     return completer.future;
   }
 
-  Widget buildItem(context, index) {
-    ProtectModel model = data[index];
+  Widget buildItem(item) {
+    ProtectModel model = item;
     return new ProtectCard(
       model,
       margin: EdgeInsets.only(
         left: 10.0,
         right: 10.0,
-        top: model.id == data[0].id ? 10.0 : 0,
+        top: model.id == data[0].id ? 0.0 : 0,
         bottom: model.id == data[data.length - 1].id ? 10.0 : 0,
       ),
     );
@@ -66,21 +73,27 @@ class _ProtectPageState extends State<ProtectPage>
   Widget build(BuildContext context) {
     super.build(context);
     return new Scaffold(
-      body: listNoEmpty(data)
-          ? new SmartRefresher(
-              controller: _refreshController,
-              onRefresh: _refreshData,
-              child: new ListView.builder(
-                itemBuilder: buildItem,
-                itemCount: data.length,
-              ),
-            )
-          : new Center(
-              child: new Text(
-                '暂无数据',
-                style: Theme.of(context).textTheme.display1,
-              ),
-            ),
+      body: new SmartRefresher(
+        controller: _refreshController,
+        onRefresh: _refreshData,
+        child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            new Space(),
+            new TitleView('数据统计'),
+            new Statics(statisticsModel),
+            new TitleView('防护知识'),
+            listNoEmpty(data)
+                ? new Column(children: data.map(buildItem).toList())
+                : new Center(
+                    child: new Text(
+                      '暂无数据',
+                      style: Theme.of(context).textTheme.display1,
+                    ),
+                  ),
+          ],
+        ),
+      ),
     );
   }
 }
