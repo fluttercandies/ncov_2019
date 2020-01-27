@@ -20,10 +20,7 @@ class RumorCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(5.0)),
         gradient: LinearGradient(
-          colors: [
-            Color(0xff68869e).withOpacity(0.5),
-            Color(0xff292f4b).withOpacity(0.5),
-          ],
+          colors: [Color(0xff68869e), Color(0xff292f4b)],
         ),
       ),
       child: new Column(

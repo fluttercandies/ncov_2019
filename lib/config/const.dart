@@ -14,3 +14,4 @@ const lineColor = Colors.grey;
 
 const mainTextColor = Color.fromRGBO(115, 115, 115, 1.0);
 
+const defImg = 'http://www.flutterj.com/content/templates/emlog_dux/images/random/1.jpg';

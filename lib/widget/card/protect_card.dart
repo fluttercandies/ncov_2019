@@ -46,7 +46,7 @@ class ProtectCard extends StatelessWidget {
             new ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(5.0)),
               child: new Image.network(
-                '${model.imgUrl}',
+                '${strNoEmpty(model?.imgUrl) ? model.imgUrl : defImg}',
                 height: 68.0,
                 width: 91.0,
                 fit: BoxFit.cover,
