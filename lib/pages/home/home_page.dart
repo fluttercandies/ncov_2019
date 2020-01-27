@@ -10,9 +10,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new ComMomBar(title: 'home'),
-      ),
+      appBar: new ComMomBar(title: 'home'),
     );
   }
 }

@@ -10,9 +10,7 @@ class _ProtectPageState extends State<ProtectPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new ComMomBar(title: 'ProtectPage'),
-      ),
+      appBar: new ComMomBar(title: 'ProtectPage'),
     );
   }
 }

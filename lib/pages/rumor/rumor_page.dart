@@ -10,9 +10,7 @@ class _RumorPageState extends State<RumorPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new ComMomBar(title: 'RumorPage'),
-      ),
+      appBar: new ComMomBar(title: 'RumorPage'),
     );
   }
 }

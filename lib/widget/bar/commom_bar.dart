@@ -8,7 +8,7 @@ class ComMomBar extends StatelessWidget implements PreferredSizeWidget {
     this.showShadow = false,
     this.rightDMActions,
     this.backgroundColor = appBarColor,
-    this.mainColor = Colors.black,
+    this.mainColor = Colors.white,
     this.titleW,
     this.bottom,
     this.leadingImg = '',
