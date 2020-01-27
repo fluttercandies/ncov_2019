@@ -45,6 +45,7 @@ class RootTabBarState extends State<RootTabBar> {
       type: BottomNavigationBarType.fixed,
       currentIndex: currentIndex,
       unselectedItemColor: mainTextColor,
+      fixedColor: fixedColor,
       onTap: (int index) {
         setState(() => currentIndex = index);
         pageController.jumpToPage(currentIndex);
