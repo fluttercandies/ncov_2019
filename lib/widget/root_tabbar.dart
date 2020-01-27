@@ -50,6 +50,7 @@ class RootTabBarState extends State<RootTabBar> {
       onTap: (int index) {
         setState(() => currentIndex = index);
         pageController.jumpToPage(currentIndex);
+        Notice.send(NCOVActions.toTabBarIndex(), index);
       },
       unselectedFontSize: 18.0,
       selectedFontSize: 18.0,

@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:ncov_2019/api/protect_view_model.dart';
+import 'package:ncov_2019/api/lore_view_model.dart';
 import 'package:ncov_2019/commom/commom.dart';
 
-class ProtectCard extends StatelessWidget {
-  final ProtectModel model;
+class LoreCard extends StatelessWidget {
+  final LoreModel model;
 
-  ProtectCard(this.model);
+  LoreCard(this.model);
 
   @override
   Widget build(BuildContext context) {
-    int createTime =
-        int.parse('${stringDisposeWithDouble(model?.createTime ?? 0 / 1000)}');
     return Container(
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: lineColor, width: 0.2)),
@@ -23,6 +21,19 @@ class ProtectCard extends StatelessWidget {
         ),
         child: new Row(
           children: <Widget>[
+            new Visibility(
+              visible: strNoEmpty(model?.imgUrl),
+              child: new ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                child: new Image.network(
+                  '${model.imgUrl}',
+                  height: 102.0,
+                  width: 102.0,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            new Space(),
             new Expanded(
               child: new Container(
                 padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -36,22 +47,13 @@ class ProtectCard extends StatelessWidget {
                     ),
                     new Space(height: 15.0),
                     new Text(
-                      '${formatTimeStampToString(createTime) ?? ''}',
+                      '${model?.description ?? '未知'}',
                       style: TextStyle(color: mainTextColor),
                     ),
                   ],
                 ),
               ),
             ),
-            new ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
-              child: new Image.network(
-                '${strNoEmpty(model?.imgUrl) ? model.imgUrl : defImg}',
-                height: 68.0,
-                width: 91.0,
-                fit: BoxFit.cover,
-              ),
-            )
           ],
         ),
       ),

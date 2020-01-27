@@ -10,4 +10,7 @@ class API {
 
   // 最新防护知识
   static const getIndexRecommendList = '/data/getIndexRecommendList';
+
+  // 最新知识百科
+  static const getWikiList = '/data/getWikiList';
 }

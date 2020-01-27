@@ -5,6 +5,8 @@ class NCOVActions {
   static String msg() => 'msg';
 
   static String voiceImg() => 'voiceImg';
+
+  static String toTabBarIndex() => 'toTabBarIndex';
 }
 
 class Data {

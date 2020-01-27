@@ -21,6 +21,9 @@ class _ProtectPageState extends State<ProtectPage>
   @override
   void initState() {
     super.initState();
+    Notice.addListener(NCOVActions.toTabBarIndex(), (index) {
+      if (!listNoEmpty(data)) getData();
+    });
     getData();
   }
 
