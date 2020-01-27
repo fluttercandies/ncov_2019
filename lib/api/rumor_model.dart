@@ -14,6 +14,17 @@ class RumorListReqModel extends ReqModel {
   Future data() => get();
 }
 
+/*
+* 最新辟谣 - 响应
+*
+* @param id 事件Id
+* @param title 标题
+* @param mainSummary 辟谣方
+* @param summary 概要
+* @param sourceUrl 原文Url
+* @param body 详情
+* @param rumorType 谣言类型
+* */
 class RumorListModel {
   String summary;
   String sourceUrl;
@@ -23,6 +34,7 @@ class RumorListModel {
   String mainSummary;
   String title;
   String body;
+  bool isOpen;
 
   RumorListModel({
     this.summary,
@@ -33,6 +45,7 @@ class RumorListModel {
     this.mainSummary,
     this.title,
     this.body,
+    this.isOpen = false,
   });
 
   RumorListModel.fromJson(Map<String, dynamic> json) {
@@ -44,6 +57,7 @@ class RumorListModel {
     mainSummary = json['mainSummary'];
     title = json['title'];
     body = json['body'];
+    isOpen = false;
   }
 
   Map<String, dynamic> toJson() {

@@ -49,7 +49,18 @@ class _RumorPageState extends State<RumorPage>
 
   Widget buildItem(context, index) {
     RumorListModel model = data[index];
-    return new RumorCard(model);
+    return new RumorCard(
+      model,
+      margin: EdgeInsets.only(
+        left: 20.0,
+        right: 20.0,
+        top: model.id == data[0].id ? 20.0 : 10,
+        bottom: model.id == data[data.length - 1].id ? 20.0 : 10,
+      ),
+      onTap: () {
+        setState(() => model.isOpen = !model.isOpen);
+      },
+    );
   }
 
   @override

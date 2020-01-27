@@ -4,13 +4,18 @@ import 'package:ncov_2019/commom/commom.dart';
 
 class RumorCard extends StatelessWidget {
   final RumorListModel model;
+  final EdgeInsetsGeometry margin;
+  final GestureTapCallback onTap;
 
-  RumorCard(this.model);
+  RumorCard(this.model, {@required this.margin, this.onTap});
+
+  static TextStyle defStyle = TextStyle(
+      color: Color(0xff999999), fontSize: 16.0, fontWeight: FontWeight.w600);
 
   @override
   Widget build(BuildContext context) {
     return new Container(
-      margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      margin: margin,
       padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(5.0)),
@@ -26,31 +31,65 @@ class RumorCard extends StatelessWidget {
         children: <Widget>[
           new Text(
             '${model?.title ?? '未知'}',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          new Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
-            child: new Text(
-              '${model?.summary ?? '未知'}',
-              maxLines: 5,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Color(0xff999999), fontSize: 12.0),
+          new Container(
+            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(5.0)),
             ),
-          ),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              new Text(
-                '地区：${model?.id ?? '未知'}',
-                style: TextStyle(color: Color(0xff999999), fontSize: 13.0),
-              ),
-              new Text(
-                '来源：${model?.id ?? '未知'}',
-                style: TextStyle(color: Color(0xff999999), fontSize: 13.0),
-              ),
-            ],
+            margin: EdgeInsets.symmetric(vertical: 10.0),
+            child: new Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                new Text('${model?.mainSummary ?? '未知'}', style: defStyle),
+                new Text('${model?.summary ?? '未知'}', style: defStyle),
+                new Space(),
+                new Visibility(
+                  visible: model.isOpen,
+                  child: new Text(
+                    '${model?.body ?? '未知'}',
+                    style: TextStyle(color: Color(0xff999999), fontSize: 16.0),
+                  ),
+                ),
+                new GestureDetector(
+                  child: new Padding(
+                    padding: EdgeInsets.all(3.0),
+                    child: new Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        new Text(
+                          '${model.isOpen ? '收起' : '展开'}详情',
+                          style: TextStyle(
+                            color: Color(0xff999999),
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        new Icon(
+                          model.isOpen
+                              ? Icons.keyboard_arrow_up
+                              : Icons.keyboard_arrow_down,
+                          color: Color(0xff999999),
+                        )
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    if (onTap != null) {
+                      onTap();
+                    }
+                  },
+                ),
+              ],
+            ),
           )
         ],
       ),
