@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ncov_2019/api/news_model.dart';
 import 'package:ncov_2019/commom/commom.dart';
+import 'package:ncov_2019/widget/view/web_view_page.dart';
 
 class NewsCard extends StatelessWidget {
   final TimeNewsModel model;
@@ -14,7 +15,8 @@ class NewsCard extends StatelessWidget {
       alignment: Alignment.centerLeft,
       width: winWidth(context),
       child: new FlatButton(
-        onPressed: () {},
+        onPressed: () => routePush(
+            new WebViewPage(model.sourceUrl, '${model?.title ?? '未知'}')),
         color: Colors.white,
         padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
         shape: RoundedRectangleBorder(

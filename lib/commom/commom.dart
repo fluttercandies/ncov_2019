@@ -15,3 +15,6 @@ export 'package:ncov_2019/config/keys.dart';
 
 /// widget
 export 'package:ncov_2019/widget/bar/commom_bar.dart';
+
+/// other
+export 'package:nav_router/nav_router.dart';
