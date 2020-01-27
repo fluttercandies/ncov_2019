@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ncov_2019/pages/home/home_page.dart';
 import 'package:ncov_2019/pages/lore/lore_page.dart';
 import 'package:ncov_2019/pages/protect/protect_page.dart';
-import 'package:ncov_2019/pages/root/root_tabbar.dart';
 import 'package:ncov_2019/pages/rumor/rumor_page.dart';
+import 'package:ncov_2019/widget/root_tabbar.dart';
 
 class RootPage extends StatefulWidget {
   @override
