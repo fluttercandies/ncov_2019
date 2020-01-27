@@ -11,7 +11,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
@@ -22,6 +23,9 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     getData();
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   getData() {
     timeNewsViewModel.getTimeNews().then((v) {
@@ -49,6 +53,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return new Scaffold(
       appBar: new ComMomBar(title: '首页，数据条目${data.length}'),
       body: listNoEmpty(data)
