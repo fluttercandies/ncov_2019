@@ -51,7 +51,15 @@ class _LorePageState extends State<LorePage>
 
   Widget buildItem(context, index) {
     LoreModel model = data[index];
-    return new LoreCard(model);
+    return new LoreCard(
+      model,
+      margin: EdgeInsets.only(
+        left: 10.0,
+        right: 10.0,
+        top: model.id == data[0].id ? 10.0 : 0,
+        bottom: model.id == data[data.length - 1].id ? 10.0 : 0,
+      ),
+    );
   }
 
   @override

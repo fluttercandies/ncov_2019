@@ -4,8 +4,9 @@ import 'package:ncov_2019/commom/commom.dart';
 
 class LoreCard extends StatelessWidget {
   final LoreModel model;
+  final EdgeInsetsGeometry margin;
 
-  LoreCard(this.model);
+  LoreCard(this.model, {@required this.margin});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class LoreCard extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: lineColor, width: 0.2)),
       ),
-      margin: EdgeInsets.symmetric(horizontal: 10.0),
+      margin: margin,
       child: new FlatButton(
         onPressed: () => routePush(
           new WebViewPage(model?.linkUrl ?? 'http://book.flutterj.com/',

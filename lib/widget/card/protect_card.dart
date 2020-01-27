@@ -4,8 +4,9 @@ import 'package:ncov_2019/commom/commom.dart';
 
 class ProtectCard extends StatelessWidget {
   final ProtectModel model;
+  final EdgeInsetsGeometry margin;
 
-  ProtectCard(this.model);
+  ProtectCard(this.model,{@required this.margin});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class ProtectCard extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: lineColor, width: 0.2)),
       ),
-      margin: EdgeInsets.symmetric(horizontal: 10.0),
+      margin: margin,
       child: new FlatButton(
         onPressed: () => routePush(
           new WebViewPage(model?.linkUrl ?? 'http://book.flutterj.com/',
