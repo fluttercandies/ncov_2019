@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ncov_2019/widget/bar/commom_bar.dart';
 
 class LorePage extends StatefulWidget {
   @override

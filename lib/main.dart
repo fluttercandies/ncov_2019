@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ncov_2019/app.dart';
 import 'package:ncov_2019/config/storage_manager.dart';
-import 'package:provider/provider.dart';
 
 /*
 * App入口
@@ -16,8 +15,7 @@ void main() async {
   /// 配置初始化
   await StorageManager.init();
 
-  Provider.debugCheckInvalidValueType = null;
-
+  /// App入口
   runApp(new MyApp());
 
   /// 自定义报错页面

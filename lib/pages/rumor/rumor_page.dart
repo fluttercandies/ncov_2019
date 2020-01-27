@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:ncov_2019/api/rumor_view_model.dart';
 import 'package:ncov_2019/commom/commom.dart';
-import 'package:ncov_2019/widget/bar/commom_bar.dart';
 import 'package:ncov_2019/widget/card/rumor_card.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
