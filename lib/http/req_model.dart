@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:ncov_2019/commom/commom.dart';
-import 'package:ncov_2019/http/config.dart';
+import 'package:ncov_2019/config/api.dart';
 
 // 请求计数
 var _id = 0;
@@ -75,14 +75,14 @@ class ReqModel {
   }) async {
     Dio _client;
 
-    final httpUrl = '$reqUrl$url';
+    final httpUrl = '${API.reqUrl}$url';
 
     if (_client == null) {
       BaseOptions options = new BaseOptions();
       options.connectTimeout = connectTimeOut;
       options.receiveTimeout = receiveTimeOut;
       options.headers = const {'Content-Type': 'application/json'};
-      options.baseUrl = reqUrl;
+      options.baseUrl = API.reqUrl;
       _client = new Dio(options);
     }
 

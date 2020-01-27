@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:nav_router/nav_router.dart';
-import 'package:ncov_2019/http/config.dart';
+import 'package:ncov_2019/config/config.dart';
 import 'package:ncov_2019/pages/root.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: title,
       navigatorKey: navGK,
       theme: ThemeData(

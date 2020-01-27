@@ -1,3 +1,4 @@
+import 'package:ncov_2019/config/api.dart';
 import 'package:ncov_2019/http/req_model.dart';
 
 /*
@@ -5,7 +6,7 @@ import 'package:ncov_2019/http/req_model.dart';
 * */
 class TimeNewsReqModel extends ReqModel {
   @override
-  String url() => '/data/getTimelineService';
+  String url() => API.timelineService;
 
   @override
   Map params() => {};
