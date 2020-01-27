@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:ncov_2019/commom/commom.dart';
 import 'package:ncov_2019/config/api.dart';
+import 'package:ncov_2019/config/config.dart';
 
 // 请求计数
 var _id = 0;
@@ -13,11 +14,6 @@ var _id = 0;
 enum RequestType { GET, POST }
 
 class ReqModel {
-  ///连接超时时间为5秒
-  static const int connectTimeOut = 5 * 1000;
-
-  ///响应超时时间为7秒
-  static const int receiveTimeOut = 7 * 1000;
 
   // 请求url路径
   String url() => null;
