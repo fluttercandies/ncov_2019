@@ -4,4 +4,7 @@ class API {
 
   // 按时间线获取事件
   static const timelineService = '/data/getTimelineService';
+
+  // 最新辟谣
+  static const getIndexRumorList = '/data/getIndexRumorList';
 }

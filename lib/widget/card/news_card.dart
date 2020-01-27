@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:ncov_2019/api/news_model.dart';
 import 'package:ncov_2019/commom/commom.dart';
-import 'package:ncov_2019/widget/view/web_view_page.dart';
 
 class NewsCard extends StatelessWidget {
   final TimeNewsModel model;
+  final EdgeInsetsGeometry padding;
 
-  NewsCard(this.model);
+  NewsCard(this.model, {@required this.padding});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      padding: padding,
       alignment: Alignment.centerLeft,
       width: winWidth(context),
       child: new FlatButton(
-        onPressed: () => routePush(
-            new WebViewPage(model.sourceUrl, '${model?.title ?? '未知'}')),
+        onPressed: () => routePush(new WebViewPage(
+            model?.sourceUrl ?? 'http://book.flutterj.com/',
+            '${model?.title ?? '未知'}')),
         color: Colors.white,
         padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
         shape: RoundedRectangleBorder(

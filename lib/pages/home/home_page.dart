@@ -48,7 +48,15 @@ class _HomePageState extends State<HomePage>
 
   Widget buildItem(context, index) {
     TimeNewsModel model = data[index];
-    return new NewsCard(model);
+    return new NewsCard(
+      model,
+      padding: EdgeInsets.only(
+        left: 20.0,
+        right: 20.0,
+        top: model.id == data[0].id ? 20.0 : 10,
+        bottom: model.id == data[data.length - 1].id ? 20.0 : 10,
+      ),
+    );
   }
 
   @override

@@ -18,3 +18,4 @@ export 'package:ncov_2019/widget/bar/commom_bar.dart';
 
 /// other
 export 'package:nav_router/nav_router.dart';
+export 'package:ncov_2019/widget/view/web_view_page.dart';
