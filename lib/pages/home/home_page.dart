@@ -116,17 +116,7 @@ class _HomePageState extends State<HomePage>
                       style: Theme.of(context).textTheme.display1,
                     ),
                   )
-            : new Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  new CircularProgressIndicator(),
-                  new Space(),
-                  new Text(
-                    '加载中',
-                    style: TextStyle(color: mainTextColor),
-                  ),
-                ],
-              ),
+            : new LoadingView(),
 //        child: new ListView(
 //          children: <Widget>[
 //            new Space(),

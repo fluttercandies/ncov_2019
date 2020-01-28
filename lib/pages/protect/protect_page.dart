@@ -24,6 +24,8 @@ class _ProtectPageState extends State<ProtectPage>
   List data = new List();
   List areaData = new List();
 
+  bool isReq = false;
+
   @override
   void initState() {
     super.initState();
@@ -38,7 +40,10 @@ class _ProtectPageState extends State<ProtectPage>
 
   getData() {
     protectViewModel.getData().then((v) {
-      setState(() => data = v);
+      setState(() {
+        data = v;
+        isReq = true;
+      });
     });
     areaViewModel.getData().then((v) {
       setState(() => areaData = v);
@@ -150,14 +155,16 @@ class _ProtectPageState extends State<ProtectPage>
               new Divider(),
               new Space(height: mainSpace / 2),
               new TitleView('防护知识'),
-              listNoEmpty(data)
-                  ? new Column(children: data.map(buildItem).toList())
-                  : new Center(
-                      child: new Text(
-                        '暂无数据',
-                        style: Theme.of(context).textTheme.display1,
-                      ),
-                    ),
+              isReq
+                  ? listNoEmpty(data)
+                      ? new Column(children: data.map(buildItem).toList())
+                      : new Center(
+                          child: new Text(
+                            '暂无数据',
+                            style: Theme.of(context).textTheme.display1,
+                          ),
+                        )
+                  : new LoadingView(),
             ],
           ),
         ),

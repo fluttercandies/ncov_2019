@@ -19,6 +19,8 @@ class _RumorPageState extends State<RumorPage>
     with AutomaticKeepAliveClientMixin {
   List<dynamic> data = new List();
 
+  bool isReq = false;
+
   List entriesData = new List();
 
   StatisticsModel statisticsModel = new StatisticsModel();
@@ -40,7 +42,10 @@ class _RumorPageState extends State<RumorPage>
 
   getData() {
     rumorListReqViewModel.getRumor().then((v) {
-      setState(() => data = v);
+      setState(() {
+        data = v;
+        isReq = true;
+      });
     });
     statisticsViewModel.getData().then((v) {
       setState(() => statisticsModel = v);
@@ -88,7 +93,6 @@ class _RumorPageState extends State<RumorPage>
         onRefresh: _refreshData,
         child: new ListView(
           children: <Widget>[
-
             new Space(),
             new TitleView(
               '全国统计',
@@ -129,16 +133,18 @@ class _RumorPageState extends State<RumorPage>
               ),
             ),
             new TitleView('辟谣', subTitle: '消息数量：${data.length}'),
-            listNoEmpty(data)
-                ? new Column(
-              children: data.map(buildItem).toList(),
-            )
-                : new Center(
-              child: new Text(
-                '暂无数据',
-                style: Theme.of(context).textTheme.display1,
-              ),
-            )
+            isReq
+                ? listNoEmpty(data)
+                    ? new Column(
+                        children: data.map(buildItem).toList(),
+                      )
+                    : new Center(
+                        child: new Text(
+                          '暂无数据',
+                          style: Theme.of(context).textTheme.display1,
+                        ),
+                      )
+                : new LoadingView(),
           ],
         ),
       ),

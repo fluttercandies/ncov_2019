@@ -16,6 +16,7 @@ export 'package:ncov_2019/config/keys.dart';
 /// widget
 export 'package:ncov_2019/widget/bar/commom_bar.dart';
 export 'package:ncov_2019/widget/view/title_view.dart';
+export 'package:ncov_2019/widget/view/loading_view.dart';
 
 /// other
 export 'package:nav_router/nav_router.dart';

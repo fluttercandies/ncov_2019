@@ -18,6 +18,8 @@ class _LorePageState extends State<LorePage>
 
   List data = new List();
 
+  bool isReq = false;
+
   @override
   void initState() {
     super.initState();
@@ -32,7 +34,10 @@ class _LorePageState extends State<LorePage>
 
   getData() {
     loreViewModel.getLore().then((v) {
-      setState(() => data = v);
+      setState(() {
+        data = v;
+        isReq = true;
+      });
     });
   }
 
@@ -69,17 +74,19 @@ class _LorePageState extends State<LorePage>
       body: new SmartRefresher(
         controller: _refreshController,
         onRefresh: _refreshData,
-        child: listNoEmpty(data)
-            ? new ListView.builder(
-                itemBuilder: buildItem,
-                itemCount: data.length,
-              )
-            : new Center(
-                child: new Text(
-                  '暂无数据',
-                  style: Theme.of(context).textTheme.display1,
-                ),
-              ),
+        child: isReq
+            ? listNoEmpty(data)
+                ? new ListView.builder(
+                    itemBuilder: buildItem,
+                    itemCount: data.length,
+                  )
+                : new Center(
+                    child: new Text(
+                      '暂无数据',
+                      style: Theme.of(context).textTheme.display1,
+                    ),
+                  )
+            : new LoadingView(),
       ),
     );
   }
