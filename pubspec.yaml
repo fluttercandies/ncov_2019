@@ -19,7 +19,8 @@ dependencies:
   flutter_swiper: ^1.1.6
   cached_network_image: ^1.1.1
   shared_preferences: ^0.5.2+2
-  intl: any
+  intl: ^0.16.1
+  open_file: ^2.1.1
 
 dev_dependencies:
   flutter_test:

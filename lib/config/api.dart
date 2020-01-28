@@ -22,4 +22,7 @@ class API {
 
   // 诊疗信息
   static const getEntries = '/data/getEntries';
+
+  // 版本更新
+  static const update = '/app/update';
 }

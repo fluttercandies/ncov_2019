@@ -1,10 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:ncov_2019/api/version_model.dart';
+import 'package:ncov_2019/api/version_view_model.dart';
 import 'package:ncov_2019/commom/commom.dart';
 import 'package:ncov_2019/pages/home/home_page.dart';
 import 'package:ncov_2019/pages/lore/lore_page.dart';
 import 'package:ncov_2019/pages/protect/protect_page.dart';
 import 'package:ncov_2019/pages/rumor/rumor_page.dart';
+import 'package:ncov_2019/widget/dialog/update_dialog.dart';
 import 'package:ncov_2019/widget/root_tabbar.dart';
+import 'package:package_info/package_info.dart';
 
 class RootPage extends StatefulWidget {
   @override
@@ -12,6 +18,41 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
+  @override
+  void initState() {
+    super.initState();
+    checkVersion();
+  }
+
+  /// 检查更新 [check update]
+  checkVersion() async {
+//    if (Platform.isIOS) return;
+
+    final packageInfo = await PackageInfo.fromPlatform();
+
+    VersionModel model = await versionViewModel.getData();
+
+    int currentVersion = int.parse(removeDot(packageInfo.version));
+
+    int netVersion = int.parse(removeDot(model.appVersion));
+
+    if (currentVersion >= netVersion) {
+      debugPrint('当前版本是最新版本');
+      return;
+    }
+
+    showDialog(
+        context: context,
+        builder: (ctx2) {
+          return UpdateDialog(
+            version: model.appVersion,
+            updateUrl: model.downloadUrl,
+            updateInfo: model.updateInfo,
+            isForce: model.force,
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     List<TabBarModel> pages = <TabBarModel>[
