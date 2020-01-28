@@ -1,4 +1,4 @@
-/// commom
+/// comMom
 export 'check.dart';
 export 'ui.dart';
 export 'win_media.dart';
@@ -21,3 +21,9 @@ export 'package:ncov_2019/widget/view/title_view.dart';
 export 'package:nav_router/nav_router.dart';
 export 'package:ncov_2019/widget/view/web_view_page.dart';
 export 'package:cached_network_image/cached_network_image.dart';
+export 'package:connectivity/connectivity.dart';
+import 'package:connectivity/connectivity.dart';
+export 'package:ncov_2019/commom/shared_util.dart';
+
+
+var subscription = Connectivity();

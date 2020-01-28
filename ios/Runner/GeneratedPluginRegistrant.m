@@ -3,6 +3,7 @@
 //
 
 #import "GeneratedPluginRegistrant.h"
+#import <connectivity/ConnectivityPlugin.h>
 #import <device_info/DeviceInfoPlugin.h>
 #import <nav_router/NavRouterPlugin.h>
 #import <open_file/OpenFilePlugin.h>
@@ -16,6 +17,7 @@
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
+  [FLTConnectivityPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTConnectivityPlugin"]];
   [FLTDeviceInfoPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTDeviceInfoPlugin"]];
   [NavRouterPlugin registerWithRegistrar:[registry registrarForPlugin:@"NavRouterPlugin"]];
   [OpenFilePlugin registerWithRegistrar:[registry registrarForPlugin:@"OpenFilePlugin"]];
