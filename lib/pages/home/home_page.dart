@@ -80,6 +80,7 @@ class _HomePageState extends State<HomePage>
         onRefresh: _refreshData,
         child: new ListView(
           children: <Widget>[
+            new Space(),
             new TitleView(
                 '数据统计  ${timeHandle(statisticsModel?.modifyTime ?? 0)}'),
             new Statics(statisticsModel),

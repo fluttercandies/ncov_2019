@@ -26,7 +26,24 @@ class Statics extends StatelessWidget {
   }
 
   static TextStyle defStyle =
-      TextStyle(fontSize: 15.0, fontWeight: FontWeight.w600);
+      TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600);
+
+  Color iconColor(String label) {
+    switch (label) {
+      case '传染源':
+        return Colors.blueAccent;
+        break;
+      case '病毒':
+        return Colors.blueAccent;
+        break;
+      case '传播途径':
+        return Colors.blueAccent;
+        break;
+      default:
+        return Colors.red;
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +54,19 @@ class Statics extends StatelessWidget {
       {'label': '死亡人数', 'value': '${statisticsModel?.deadCount ?? 0}'},
     ];
 
-    List remark1 = statisticsModel?.remark1 ?? '未知key:未知'.split(':');
+    List remark1 = strNoEmpty(statisticsModel?.remark1)
+        ? statisticsModel.remark1.split(':')
+        : ['未知', '未知'];
+    List remark2 = strNoEmpty(statisticsModel?.remark2)
+        ? statisticsModel.remark2.split(':')
+        : ['未知', '未知'];
 
     List staticsInfo = [
       {'label': '传染源', 'value': '${statisticsModel?.infectSource ?? '未知'}'},
       {'label': '病毒', 'value': '${statisticsModel?.virus ?? '未知'}'},
       {'label': '传播途径', 'value': '${statisticsModel?.passWay ?? '未知'}'},
       {'label': '${remark1[0]}', 'value': '${remark1[1]}'},
-      {'label': '潜伏期', 'value': '${statisticsModel?.remark2 ?? '未知'}'},
+      {'label': '${remark2[0]}', 'value': '${remark2[1]}'},
     ];
 
     Widget itemBuild(item) {
@@ -82,18 +104,25 @@ class Statics extends StatelessWidget {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            new Visibility(
+              visible: model.label != '传染源',
+              child: new Space(),
+            ),
             new SizedBox(
               width: 120,
               child: new Row(
                 children: <Widget>[
-                  new Icon(Icons.insert_chart),
+                  new Icon(
+                    Icons.insert_chart,
+                    color: iconColor(model.label),
+                  ),
                   new Space(width: mainSpace / 2),
                   new Text('${model.label}：', style: defStyle),
                 ],
               ),
             ),
             new Text(
-              '${model.value}',
+              '  ·  ${model.value}',
               style: defStyle,
               maxLines: 5,
               overflow: TextOverflow.ellipsis,

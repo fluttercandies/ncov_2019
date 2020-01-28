@@ -83,6 +83,7 @@ class _ProtectPageState extends State<ProtectPage>
               new Space(),
               new TitleView('数据统计  ${timeHandle(statisticsModel?.modifyTime ?? 0)}'),
               new Statics(statisticsModel),
+              new Divider(),
               new TitleView('防护知识'),
               listNoEmpty(data)
                   ? new Column(children: data.map(buildItem).toList())
