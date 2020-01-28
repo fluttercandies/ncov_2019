@@ -18,8 +18,9 @@ class NewsCard extends StatelessWidget {
     double createTimeDouble =
         strNoEmpty('${model?.createTime}') ? model.createTime / 1000 : 0;
     int createTime = int.parse('${stringDisposeWithDouble(createTimeDouble)}');
+
     bool isTimeStr =
-        DateTime.now().millisecondsSinceEpoch - model?.createTime < 86400000;
+        DateTime.now().millisecondsSinceEpoch - model?.createTime < 43200000;
     return Container(
       padding: padding,
       alignment: Alignment.centerLeft,
@@ -46,7 +47,7 @@ class NewsCard extends StatelessWidget {
                         color: Colors.redAccent,
                         borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(horizontal: 3.0,vertical: 2),
+                    padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 2),
                     margin: EdgeInsets.only(right: 5.0),
                     child: new Text(
                       '最新',

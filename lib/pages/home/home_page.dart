@@ -20,7 +20,10 @@ class _HomePageState extends State<HomePage>
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
+  bool isReq = false;
+
   List data = new List();
+
 //  List entriesData = new List();
 //
 //  StatisticsModel statisticsModel = new StatisticsModel();
@@ -39,7 +42,10 @@ class _HomePageState extends State<HomePage>
 
   getData() {
     timeNewsViewModel.getTimeNews().then((v) {
-      setState(() => data = v);
+      setState(() {
+        data = v;
+        isReq = true;
+      });
     });
 //    statisticsViewModel.getData().then((v) {
 //      setState(() => statisticsModel = v);
@@ -84,23 +90,43 @@ class _HomePageState extends State<HomePage>
       body: new SmartRefresher(
         controller: _refreshController,
         onRefresh: _refreshData,
-        child: new ListView.builder(
-          itemBuilder: (context, index) {
-            TimeNewsModel model = data[index];
-            bool isNew = model.id == data[0].id;
-            return new NewsCard(
-              model,
-              padding: EdgeInsets.only(
-                left: 20.0,
-                right: 20.0,
-                top: isNew ? 10.0 : 10,
-                bottom: model.id == data[data.length - 1].id ? 20.0 : 10,
+        child: isReq
+            ? listNoEmpty(data)
+                ? new ListView.builder(
+                    itemBuilder: (context, index) {
+                      TimeNewsModel model = data[index];
+                      bool isNew = model.id == data[0].id;
+                      return new NewsCard(
+                        model,
+                        padding: EdgeInsets.only(
+                          left: 20.0,
+                          right: 20.0,
+                          top: isNew ? 10.0 : 10,
+                          bottom:
+                              model.id == data[data.length - 1].id ? 20.0 : 10,
+                        ),
+                        isNew: isNew,
+                      );
+                    },
+                    itemCount: data.length,
+                  )
+                : new Center(
+                    child: new Text(
+                      '暂无数据',
+                      style: Theme.of(context).textTheme.display1,
+                    ),
+                  )
+            : new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  new CircularProgressIndicator(),
+                  new Space(),
+                  new Text(
+                    '加载中',
+                    style: TextStyle(color: mainTextColor),
+                  ),
+                ],
               ),
-              isNew: isNew,
-            );
-          },
-          itemCount: data.length,
-        ),
 //        child: new ListView(
 //          children: <Widget>[
 //            new Space(),
