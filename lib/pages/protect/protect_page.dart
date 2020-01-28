@@ -20,7 +20,6 @@ class _ProtectPageState extends State<ProtectPage>
       RefreshController(initialRefresh: false);
 
   List data = new List();
-  StatisticsModel statisticsModel = new StatisticsModel();
 
   @override
   void initState() {
@@ -37,9 +36,6 @@ class _ProtectPageState extends State<ProtectPage>
   getData() {
     protectViewModel.getData().then((v) {
       setState(() => data = v);
-    });
-    statisticsViewModel.getData().then((v) {
-      setState(() => statisticsModel = v);
     });
   }
 
@@ -81,8 +77,8 @@ class _ProtectPageState extends State<ProtectPage>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               new Space(),
-              new TitleView('全国统计  ${timeHandle(statisticsModel?.modifyTime ?? 0)}'),
-              new Statics(statisticsModel),
+              new TitleView('地区统计'),
+
               new Divider(),
               new TitleView('防护知识'),
               listNoEmpty(data)

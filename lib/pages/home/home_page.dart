@@ -122,6 +122,7 @@ class _HomePageState extends State<HomePage>
                 child: new CachedNetworkImage(imageUrl: statisticsModel.dailyPic),
               ),
             ),
+            new Space(),
             new TitleView('最新消息'),
             listNoEmpty(data)
                 ? new Column(children: data.map(buildItem).toList())
