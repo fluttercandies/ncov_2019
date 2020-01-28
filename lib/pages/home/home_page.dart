@@ -104,6 +104,7 @@ class _HomePageState extends State<HomePage>
             ),
             new Statics(statisticsModel),
             new Divider(),
+            new Space(height: mainSpace / 2),
             new Visibility(
               visible: strNoEmpty(statisticsModel?.imgUrl ?? ''),
               child: new TitleView('疫情地图', subTitle: '数据来源：国家及各省市地区卫健委'),
@@ -111,15 +112,17 @@ class _HomePageState extends State<HomePage>
             new Visibility(
               visible: strNoEmpty(statisticsModel?.imgUrl ?? ''),
               child: new Padding(
-                padding: EdgeInsets.only(top: 5.0),
-                child: new CachedNetworkImage(imageUrl: statisticsModel.imgUrl),
+                padding: EdgeInsets.only(top: 10.0),
+                child: new CachedNetworkImage(
+                    imageUrl: statisticsModel?.imgUrl ?? defImg),
               ),
             ),
             new Visibility(
               visible: strNoEmpty(statisticsModel?.dailyPic ?? ''),
               child: new Padding(
-                padding: EdgeInsets.only(bottom: 5.0),
-                child: new CachedNetworkImage(imageUrl: statisticsModel.dailyPic),
+                padding: EdgeInsets.only(bottom: 10.0),
+                child: new CachedNetworkImage(
+                    imageUrl: statisticsModel?.dailyPic ?? defImg),
               ),
             ),
             new Space(),

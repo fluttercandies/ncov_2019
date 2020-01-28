@@ -16,4 +16,7 @@ class API {
 
   // 获取整体统计信息
   static const getStatisticsService = '/data/getStatisticsService';
+
+  // 获取省份信息
+  static const getAreaStat = '/data/getAreaStat';
 }
