@@ -46,7 +46,7 @@ class NewsCard extends StatelessWidget {
                         color: Colors.redAccent,
                         borderRadius: BorderRadius.all(Radius.circular(5.0))),
                     alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(horizontal: 3.0),
+                    padding: EdgeInsets.symmetric(horizontal: 3.0,vertical: 2),
                     margin: EdgeInsets.only(right: 5.0),
                     child: new Text(
                       '最新',

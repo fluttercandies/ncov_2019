@@ -21,9 +21,9 @@ class _HomePageState extends State<HomePage>
       RefreshController(initialRefresh: false);
 
   List data = new List();
-  List entriesData = new List();
-
-  StatisticsModel statisticsModel = new StatisticsModel();
+//  List entriesData = new List();
+//
+//  StatisticsModel statisticsModel = new StatisticsModel();
 
   @override
   void initState() {
@@ -41,12 +41,12 @@ class _HomePageState extends State<HomePage>
     timeNewsViewModel.getTimeNews().then((v) {
       setState(() => data = v);
     });
-    statisticsViewModel.getData().then((v) {
-      setState(() => statisticsModel = v);
-    });
-    entriesViewModel.getData().then((v) {
-      setState(() => entriesData = v);
-    });
+//    statisticsViewModel.getData().then((v) {
+//      setState(() => statisticsModel = v);
+//    });
+//    entriesViewModel.getData().then((v) {
+//      setState(() => entriesData = v);
+//    });
   }
 
   Future<void> _refreshData() async {
@@ -84,58 +84,75 @@ class _HomePageState extends State<HomePage>
       body: new SmartRefresher(
         controller: _refreshController,
         onRefresh: _refreshData,
-        child: new ListView(
-          children: <Widget>[
-            new Space(),
-            new TitleView(
-              '全国统计',
-              subTitle: '${timeHandle(statisticsModel?.modifyTime ?? 0)}',
-            ),
-            new Statics(statisticsModel),
-            new Divider(),
-            new Space(height: mainSpace / 2),
-            new Visibility(
-              visible: strNoEmpty(statisticsModel?.imgUrl ?? ''),
-              child: new TitleView('疫情地图', subTitle: '数据来源：国家及各省市地区卫健委'),
-            ),
-            new Visibility(
-              visible: strNoEmpty(statisticsModel?.imgUrl ?? ''),
-              child: new Padding(
-                padding: EdgeInsets.only(top: 10.0),
-                child: new CachedNetworkImage(
-                    imageUrl: statisticsModel?.imgUrl ?? defImg),
+        child: new ListView.builder(
+          itemBuilder: (context, index) {
+            TimeNewsModel model = data[index];
+            bool isNew = model.id == data[0].id;
+            return new NewsCard(
+              model,
+              padding: EdgeInsets.only(
+                left: 20.0,
+                right: 20.0,
+                top: isNew ? 10.0 : 10,
+                bottom: model.id == data[data.length - 1].id ? 20.0 : 10,
               ),
-            ),
-            new Visibility(
-              visible: strNoEmpty(statisticsModel?.dailyPic ?? ''),
-              child: new Padding(
-                padding: EdgeInsets.only(bottom: 10.0),
-                child: new CachedNetworkImage(
-                    imageUrl: statisticsModel?.dailyPic ?? defImg),
-              ),
-            ),
-            new Space(),
-            new TitleView('诊疗'),
-            new Container(
-              margin: EdgeInsets.symmetric(horizontal: 10.0),
-              child: new Wrap(
-                children: entriesData.map((item) {
-                  EntriesModel model = item;
-                  return Entries(model);
-                }).toList(),
-              ),
-            ),
-            new TitleView('最新消息'),
-            listNoEmpty(data)
-                ? new Column(children: data.map(buildItem).toList())
-                : new Center(
-                    child: new Text(
-                      '暂无数据',
-                      style: Theme.of(context).textTheme.display1,
-                    ),
-                  )
-          ],
+              isNew: isNew,
+            );
+          },
+          itemCount: data.length,
         ),
+//        child: new ListView(
+//          children: <Widget>[
+//            new Space(),
+//            new TitleView(
+//              '全国统计',
+//              subTitle: '${timeHandle(statisticsModel?.modifyTime ?? 0)}',
+//            ),
+//            new Statics(statisticsModel),
+//            new Divider(),
+//            new Space(height: mainSpace / 2),
+//            new Visibility(
+//              visible: strNoEmpty(statisticsModel?.imgUrl ?? ''),
+//              child: new TitleView('疫情地图', subTitle: '数据来源：国家及各省市地区卫健委'),
+//            ),
+//            new Visibility(
+//              visible: strNoEmpty(statisticsModel?.imgUrl ?? ''),
+//              child: new Padding(
+//                padding: EdgeInsets.only(top: 10.0),
+//                child: new CachedNetworkImage(
+//                    imageUrl: statisticsModel?.imgUrl ?? defImg),
+//              ),
+//            ),
+//            new Visibility(
+//              visible: strNoEmpty(statisticsModel?.dailyPic ?? ''),
+//              child: new Padding(
+//                padding: EdgeInsets.only(bottom: 10.0),
+//                child: new CachedNetworkImage(
+//                    imageUrl: statisticsModel?.dailyPic ?? defImg),
+//              ),
+//            ),
+//            new Space(),
+//            new TitleView('诊疗'),
+//            new Container(
+//              margin: EdgeInsets.symmetric(horizontal: 10.0),
+//              child: new Wrap(
+//                children: entriesData.map((item) {
+//                  EntriesModel model = item;
+//                  return Entries(model);
+//                }).toList(),
+//              ),
+//            ),
+//            new TitleView('最新消息', subTitle: '消息数量：${data.length}'),
+//            listNoEmpty(data)
+//                ? new Column(children: data.map(buildItem).toList())
+//                : new Center(
+//                    child: new Text(
+//                      '暂无数据',
+//                      style: Theme.of(context).textTheme.display1,
+//                    ),
+//                  )
+//          ],
+//        ),
       ),
     );
   }

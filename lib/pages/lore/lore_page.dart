@@ -66,21 +66,21 @@ class _LorePageState extends State<LorePage>
   Widget build(BuildContext context) {
     super.build(context);
     return new Scaffold(
-      body: listNoEmpty(data)
-          ? new SmartRefresher(
-              controller: _refreshController,
-              onRefresh: _refreshData,
-              child: new ListView.builder(
+      body: new SmartRefresher(
+        controller: _refreshController,
+        onRefresh: _refreshData,
+        child: listNoEmpty(data)
+            ? new ListView.builder(
                 itemBuilder: buildItem,
                 itemCount: data.length,
+              )
+            : new Center(
+                child: new Text(
+                  '暂无数据',
+                  style: Theme.of(context).textTheme.display1,
+                ),
               ),
-            )
-          : new Center(
-              child: new Text(
-                '暂无数据',
-                style: Theme.of(context).textTheme.display1,
-              ),
-            ),
+      ),
     );
   }
 }
