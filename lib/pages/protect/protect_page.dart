@@ -81,7 +81,7 @@ class _ProtectPageState extends State<ProtectPage>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               new Space(),
-              new TitleView('数据统计  ${timeHandle(statisticsModel?.modifyTime ?? 0)}'),
+              new TitleView('全国统计  ${timeHandle(statisticsModel?.modifyTime ?? 0)}'),
               new Statics(statisticsModel),
               new Divider(),
               new TitleView('防护知识'),

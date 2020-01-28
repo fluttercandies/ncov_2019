@@ -99,9 +99,29 @@ class _HomePageState extends State<HomePage>
           children: <Widget>[
             new Space(),
             new TitleView(
-                '数据统计  ${timeHandle(statisticsModel?.modifyTime ?? 0)}'),
+              '全国统计',
+              subTitle: '${timeHandle(statisticsModel?.modifyTime ?? 0)}',
+            ),
             new Statics(statisticsModel),
             new Divider(),
+            new Visibility(
+              visible: strNoEmpty(statisticsModel?.imgUrl ?? ''),
+              child: new TitleView('疫情地图', subTitle: '数据来源：国家及各省市地区卫健委'),
+            ),
+            new Visibility(
+              visible: strNoEmpty(statisticsModel?.imgUrl ?? ''),
+              child: new Padding(
+                padding: EdgeInsets.only(top: 5.0),
+                child: new CachedNetworkImage(imageUrl: statisticsModel.imgUrl),
+              ),
+            ),
+            new Visibility(
+              visible: strNoEmpty(statisticsModel?.dailyPic ?? ''),
+              child: new Padding(
+                padding: EdgeInsets.only(bottom: 5.0),
+                child: new CachedNetworkImage(imageUrl: statisticsModel.dailyPic),
+              ),
+            ),
             new TitleView('最新消息'),
             listNoEmpty(data)
                 ? new Column(children: data.map(buildItem).toList())
