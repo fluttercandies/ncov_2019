@@ -2,8 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:ncov_2019/api/news_model.dart';
 import 'package:ncov_2019/api/news_view_model.dart';
+import 'package:ncov_2019/api/statistics_view_model.dart';
 import 'package:ncov_2019/commom/commom.dart';
 import 'package:ncov_2019/widget/card/news_card.dart';
+import 'package:ncov_2019/widget/item/statics.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,6 +19,8 @@ class _HomePageState extends State<HomePage>
       RefreshController(initialRefresh: false);
 
   List data = new List();
+
+  StatisticsModel statisticsModel = new StatisticsModel();
 
   @override
   void initState() {
@@ -33,6 +37,9 @@ class _HomePageState extends State<HomePage>
   getData() {
     timeNewsViewModel.getTimeNews().then((v) {
       setState(() => data = v);
+    });
+    statisticsViewModel.getData().then((v) {
+      setState(() => statisticsModel = v);
     });
   }
 
@@ -57,7 +64,7 @@ class _HomePageState extends State<HomePage>
       padding: EdgeInsets.only(
         left: 20.0,
         right: 20.0,
-        top: isNew ? 20.0 : 10,
+        top: isNew ? 10.0 : 10,
         bottom: model.id == data[data.length - 1].id ? 20.0 : 10,
       ),
       isNew: isNew,
@@ -73,7 +80,10 @@ class _HomePageState extends State<HomePage>
         onRefresh: _refreshData,
         child: new ListView(
           children: <Widget>[
-            new TitleView('数据统计'),
+            new TitleView(
+                '数据统计  ${timeHandle(statisticsModel?.modifyTime ?? 0)}'),
+            new Statics(statisticsModel),
+            new TitleView('最新消息'),
             listNoEmpty(data)
                 ? new Column(children: data.map(buildItem).toList())
                 : new Center(

@@ -76,22 +76,24 @@ class _ProtectPageState extends State<ProtectPage>
       body: new SmartRefresher(
         controller: _refreshController,
         onRefresh: _refreshData,
-        child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            new Space(),
-            new TitleView('数据统计'),
-            new Statics(statisticsModel),
-            new TitleView('防护知识'),
-            listNoEmpty(data)
-                ? new Column(children: data.map(buildItem).toList())
-                : new Center(
-                    child: new Text(
-                      '暂无数据',
-                      style: Theme.of(context).textTheme.display1,
-                    ),
-                  ),
-          ],
+        child: new SingleChildScrollView(
+          child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              new Space(),
+              new TitleView('数据统计  ${timeHandle(statisticsModel?.modifyTime ?? 0)}'),
+              new Statics(statisticsModel),
+              new TitleView('防护知识'),
+              listNoEmpty(data)
+                  ? new Column(children: data.map(buildItem).toList())
+                  : new Center(
+                child: new Text(
+                  '暂无数据',
+                  style: Theme.of(context).textTheme.display1,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

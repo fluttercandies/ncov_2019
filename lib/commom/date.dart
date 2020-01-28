@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:ncov_2019/commom/check.dart';
 
 class DateTimeForMater {
   static String full = "yyyy-MM-dd HH:mm:ss";
@@ -60,4 +61,10 @@ String formatTimeStampToString(timestamp, [format]) {
   var date = new DateTime.fromMillisecondsSinceEpoch(time * 1000);
 
   return dateFormat.format(date);
+}
+
+String timeHandle(int time) {
+  double createTimeDouble = strNoEmpty('$time') ? time / 1000 : 0;
+  int createTime = int.parse('${stringDisposeWithDouble(createTimeDouble)}');
+  return '${formatTimeStampToString(createTime) ?? '未知'}';
 }
