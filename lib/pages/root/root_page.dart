@@ -26,7 +26,7 @@ class _RootPageState extends State<RootPage> {
 
   /// 检查更新 [check update]
   checkVersion() async {
-//    if (Platform.isIOS) return;
+    if (Platform.isIOS) return;
 
     final packageInfo = await PackageInfo.fromPlatform();
 
@@ -42,15 +42,16 @@ class _RootPageState extends State<RootPage> {
     }
 
     showDialog(
-        context: context,
-        builder: (ctx2) {
-          return UpdateDialog(
-            version: model.appVersion,
-            updateUrl: model.downloadUrl,
-            updateInfo: model.updateInfo,
-            isForce: model.force,
-          );
-        });
+      context: context,
+      builder: (ctx2) {
+        return UpdateDialog(
+          version: model.appVersion,
+          updateUrl: model.downloadUrl,
+          updateInfo: model.updateInfo,
+          isForce: model.force,
+        );
+      },
+    );
   }
 
   @override

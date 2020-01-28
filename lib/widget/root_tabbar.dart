@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:ncov_2019/commom/commom.dart';
 import 'package:ncov_2019/config/const.dart';
 import 'package:ncov_2019/widget/scroll/my_behavior.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RootTabBar extends StatefulWidget {
   RootTabBar({this.pages, this.currentIndex = 0});
@@ -98,6 +99,16 @@ class RootTabBarState extends State<RootTabBar> {
             style: TextStyle(color: Colors.white, fontSize: 20.0),
           ),
         ),
+        rightDMActions: <Widget>[
+          new MaterialButton(
+            onPressed: () => launch('https://github.com/ahyangnb/ncov_2019'),
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: new Text(
+              '开源地址',
+              style: TextStyle(color: Colors.white),
+            ),
+          )
+        ],
       ),
       body: new ScrollConfiguration(
         behavior: MyBehavior(),
