@@ -78,12 +78,30 @@ class _HomePageState extends State<HomePage>
       body: new SmartRefresher(
         controller: _refreshController,
         onRefresh: _refreshData,
+//        child: new ListView.builder(
+//          itemBuilder: (context,index) {
+//            TimeNewsModel model = data[index];
+//            bool isNew = model.id == data[0].id;
+//            return new NewsCard(
+//              model,
+//              padding: EdgeInsets.only(
+//                left: 20.0,
+//                right: 20.0,
+//                top: isNew ? 10.0 : 10,
+//                bottom: model.id == data[data.length - 1].id ? 20.0 : 10,
+//              ),
+//              isNew: isNew,
+//            );
+//          },
+//          itemCount: data.length,
+//        ),
         child: new ListView(
           children: <Widget>[
             new Space(),
             new TitleView(
                 '数据统计  ${timeHandle(statisticsModel?.modifyTime ?? 0)}'),
             new Statics(statisticsModel),
+            new Divider(),
             new TitleView('最新消息'),
             listNoEmpty(data)
                 ? new Column(children: data.map(buildItem).toList())

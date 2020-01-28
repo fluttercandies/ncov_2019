@@ -26,7 +26,7 @@ class Statics extends StatelessWidget {
   }
 
   static TextStyle defStyle =
-      TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600);
+      TextStyle(fontSize: 15.0, fontWeight: FontWeight.w600);
 
   Color iconColor(String label) {
     switch (label) {
