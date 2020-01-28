@@ -49,8 +49,8 @@ class _HomePageState extends State<HomePage>
     return completer.future;
   }
 
-  Widget buildItem(context, index) {
-    TimeNewsModel model = data[index];
+  Widget buildItem(item) {
+    TimeNewsModel model = item;
     bool isNew = model.id == data[0].id;
     return new NewsCard(
       model,
@@ -68,21 +68,23 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     super.build(context);
     return new Scaffold(
-      body: listNoEmpty(data)
-          ? new SmartRefresher(
-              controller: _refreshController,
-              onRefresh: _refreshData,
-              child: new ListView.builder(
-                itemBuilder: buildItem,
-                itemCount: data.length,
-              ),
-            )
-          : new Center(
-              child: new Text(
-                '暂无数据',
-                style: Theme.of(context).textTheme.display1,
-              ),
-            ),
+      body: new SmartRefresher(
+        controller: _refreshController,
+        onRefresh: _refreshData,
+        child: new ListView(
+          children: <Widget>[
+            new TitleView('数据统计'),
+            listNoEmpty(data)
+                ? new Column(children: data.map(buildItem).toList())
+                : new Center(
+                    child: new Text(
+                      '暂无数据',
+                      style: Theme.of(context).textTheme.display1,
+                    ),
+                  )
+          ],
+        ),
+      ),
     );
   }
 }

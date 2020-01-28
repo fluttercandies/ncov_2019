@@ -6,7 +6,7 @@ class ProtectCard extends StatelessWidget {
   final ProtectModel model;
   final EdgeInsetsGeometry margin;
 
-  ProtectCard(this.model,{@required this.margin});
+  ProtectCard(this.model, {@required this.margin});
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +47,9 @@ class ProtectCard extends StatelessWidget {
             ),
             new ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(5.0)),
-              child: new Image.network(
-                '${strNoEmpty(model?.imgUrl) ? model.imgUrl : defImg}',
+              child: new CachedNetworkImage(
+                imageUrl:
+                    '${strNoEmpty(model?.imgUrl) ? model.imgUrl : defImg}',
                 height: 68.0,
                 width: 91.0,
                 fit: BoxFit.cover,

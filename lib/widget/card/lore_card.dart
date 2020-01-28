@@ -26,8 +26,8 @@ class LoreCard extends StatelessWidget {
               visible: strNoEmpty(model?.imgUrl),
               child: new ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                child: new Image.network(
-                  '${model.imgUrl}',
+                child: new CachedNetworkImage(
+                  imageUrl: '${model.imgUrl}',
                   height: 102.0,
                   width: 102.0,
                   fit: BoxFit.cover,

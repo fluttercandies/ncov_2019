@@ -15,7 +15,9 @@ export 'package:ncov_2019/config/keys.dart';
 
 /// widget
 export 'package:ncov_2019/widget/bar/commom_bar.dart';
+export 'package:ncov_2019/widget/view/title_view.dart';
 
 /// other
 export 'package:nav_router/nav_router.dart';
 export 'package:ncov_2019/widget/view/web_view_page.dart';
+export 'package:cached_network_image/cached_network_image.dart';

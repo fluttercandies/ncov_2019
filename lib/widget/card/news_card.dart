@@ -54,11 +54,16 @@ class NewsCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                new Text(
-                  '${model?.title ?? '未知'}',
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                new SizedBox(
+                  width:
+                      isNew ? winWidth(context) - 120 : winWidth(context) - 70,
+                  child: new Text(
+                    '${model?.title ?? '未知'}',
+                    style:
+                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 )
               ],
             ),
