@@ -19,4 +19,7 @@ class API {
 
   // 获取省份信息
   static const getAreaStat = '/data/getAreaStat';
+
+  // 诊疗信息
+  static const getEntries = '/data/getEntries';
 }
