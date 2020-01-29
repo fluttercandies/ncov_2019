@@ -8,7 +8,10 @@
 * [本项目介绍文章](https://juejin.im/post/5e2c8ba3e51d4557e86e9b8c)
 
 # App体验
-Android:
+##### Android 下载地址:
+[http://www.flutterj.com/nCoV-2019.apk](http://www.flutterj.com/nCoV-2019.apk)
+
+##### Android（二维码下载）:
 
 ![download.png](assets/git/download.png)
 
