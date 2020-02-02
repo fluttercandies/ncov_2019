@@ -54,11 +54,16 @@ class Statics extends StatelessWidget {
       {'label': '死亡人数', 'value': '${statisticsModel?.deadCount ?? 0}'},
     ];
 
-    List remark1 = strNoEmpty(statisticsModel?.remark1)
-        ? statisticsModel.remark1.split(':')
+    bool contains1Big = statisticsModel.remark1.contains('：');
+    bool contains1Small = statisticsModel.remark1.contains(':');
+    bool containsOr = contains1Big || contains1Small;
+    Pattern splitStr = contains1Big ? '：' : ':';
+
+    List remark1 = strNoEmpty(statisticsModel?.remark1) && containsOr
+        ? statisticsModel.remark1.split(splitStr)
         : ['未知', '未知'];
-    List remark2 = strNoEmpty(statisticsModel?.remark2)
-        ? statisticsModel.remark2.split(':')
+    List remark2 = strNoEmpty(statisticsModel?.remark2) && containsOr
+        ? statisticsModel.remark2.split(splitStr)
         : ['未知', '未知'];
 
     List staticsInfo = [
