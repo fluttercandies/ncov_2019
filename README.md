@@ -20,9 +20,9 @@ IOS:
 拉下代码直接跑即可
 
 # App效果图
-|![home.png](assets/git/home.png)| ![rumor.png](assets/git/rumor.png) |
-| --- | --- |
-|![protect.png](assets/git/protect.png)| ![lore.png](assets/git/lore.png) |
+|![home.png](assets/git/home.png)| ![rumor1.png](assets/git/rumor1.png) | ![rumor2.png](assets/git/rumor2.png) | ![rumor3.png](assets/git/rumor3.png) |
+| --- | --- | --- | --- |
+|![protect1.png](assets/git/protect1.png)| ![protect2.png](assets/git/protect2.png) | ![protect3.png](assets/git/protect3.png) | ![lore.png](assets/git/lore.png) |
 
 
 # 意见反馈
