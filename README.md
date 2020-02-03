@@ -29,6 +29,7 @@ IOS:
 
 # 使用须知
 * cached_network_image
+
 在`pubspec.yaml`文件中，关于flutter版本使用`cached_network_image`插件问题，默认使用any，
 因为你们刚安装上flutter为最新版本flutter。
 ```yaml
