@@ -27,6 +27,12 @@ IOS:
 | --- | --- | --- | --- |
 |![protect1.png](assets/git/protect1.png)| ![protect2.png](assets/git/protect2.png) | ![protect3.png](assets/git/protect3.png) | ![lore.png](assets/git/lore.png) |
 
+# 使用须知
+* `cached_network_image`，`pubspec.yaml`
+```yaml
+#  cached_network_image: ^1.1.1 # 1.9.0左右flutter版本的用这个
+  cached_network_image: any # 2.0.0左右flutter版本直接用any
+```
 
 # 使用教程
 
