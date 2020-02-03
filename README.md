@@ -28,7 +28,9 @@ IOS:
 |![protect1.png](assets/git/protect1.png)| ![protect2.png](assets/git/protect2.png) | ![protect3.png](assets/git/protect3.png) | ![lore.png](assets/git/lore.png) |
 
 # 使用须知
-* `cached_network_image`，`pubspec.yaml`
+* cached_network_image
+在`pubspec.yaml`文件中，关于flutter版本使用`cached_network_image`插件问题，默认使用any，
+因为你们刚安装上flutter为最新版本flutter。
 ```yaml
 #  cached_network_image: ^1.1.1 # 1.9.0左右flutter版本的用这个
   cached_network_image: any # 2.0.0左右flutter版本直接用any
