@@ -40,6 +40,9 @@ class StatisticsModel {
   String remark1;
   String remark3;
   String remark2;
+  String note1;
+  String note3;
+  String note2;
 
   StatisticsModel({
     this.summary,
@@ -61,9 +64,12 @@ class StatisticsModel {
     this.id,
     this.countRemark,
     this.deadCount,
-    this.remark1,
+    this.remark1 = '',
     this.remark3,
     this.remark2,
+    this.note1,
+    this.note2,
+    this.note3,
   });
 
   StatisticsModel.fromJson(Map<String, dynamic> json) {
@@ -89,6 +95,9 @@ class StatisticsModel {
     remark1 = json['remark1'];
     remark3 = json['remark3'];
     remark2 = json['remark2'];
+    note1 = json['note1'];
+    note3 = json['note3'];
+    note2 = json['note2'];
   }
 
   Map<String, dynamic> toJson() {
@@ -115,6 +124,9 @@ class StatisticsModel {
     data['remark1'] = this.remark1;
     data['remark3'] = this.remark3;
     data['remark2'] = this.remark2;
+    data['note1'] = this.note1;
+    data['note3'] = this.note3;
+    data['note2'] = this.note2;
     return data;
   }
 }

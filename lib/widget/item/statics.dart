@@ -47,6 +47,10 @@ class Statics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (statisticsModel == null) {
+      return LinearProgressIndicator();
+    }
+
     List personInfo = [
       {'label': '全国确诊', 'value': '${statisticsModel?.confirmedCount ?? 0}'},
       {'label': '疑似病例', 'value': '${statisticsModel?.suspectedCount ?? 0}'},
@@ -59,6 +63,15 @@ class Statics extends StatelessWidget {
     bool containsOr = contains1Big || contains1Small;
     Pattern splitStr = contains1Big ? '：' : ':';
 
+    List note1 = strNoEmpty(statisticsModel?.note1) && containsOr
+        ? statisticsModel.note1.split(splitStr)
+        : ['未知', '未知'];
+    List note2 = strNoEmpty(statisticsModel?.note2) && containsOr
+        ? statisticsModel.note2.split(splitStr)
+        : ['未知', '未知'];
+    List note3 = strNoEmpty(statisticsModel?.note3) && containsOr
+        ? statisticsModel.note3.split(splitStr)
+        : ['未知', '未知'];
     List remark1 = strNoEmpty(statisticsModel?.remark1) && containsOr
         ? statisticsModel.remark1.split(splitStr)
         : ['未知', '未知'];
@@ -67,9 +80,9 @@ class Statics extends StatelessWidget {
         : ['未知', '未知'];
 
     List staticsInfo = [
-      {'label': '传染源', 'value': '${statisticsModel?.infectSource ?? '未知'}'},
-      {'label': '病毒', 'value': '${statisticsModel?.virus ?? '未知'}'},
-      {'label': '传播途径', 'value': '${statisticsModel?.passWay ?? '未知'}'},
+      {'label': '${note1[0]}', 'value': '${note1[1]}'},
+      {'label': '${note2[0]}', 'value': '${note2[1]}'},
+      {'label': '${note3[0]}', 'value': '${note3[1]}'},
       {'label': '${remark1[0]}', 'value': '${remark1[1]}'},
       {'label': '${remark2[0]}', 'value': '${remark2[1]}'},
     ];

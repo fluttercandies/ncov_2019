@@ -98,7 +98,7 @@ class _RumorPageState extends State<RumorPage>
               '全国统计',
               subTitle: '${timeHandle(statisticsModel?.modifyTime ?? 0)}',
             ),
-            new Statics(statisticsModel),
+            new Statics(statisticsModel ?? null),
             new Divider(),
             new Space(height: mainSpace / 2),
             new Visibility(

@@ -9,15 +9,15 @@ class Entries extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Padding(
+    return new Container(
+      width: (winWidth(context) - 20) / 3,
       padding: EdgeInsets.symmetric(vertical: 10.0),
       child: new FlatButton(
         onPressed: () => routePush(
           new WebViewPage(model?.linkUrl ?? 'http://book.flutterj.com/',
               '${model?.configName ?? '未知'}'),
         ),
-        child: new Container(
-          width: (winWidth(context) - 20) / 4,
+        child: new Padding(
           padding: EdgeInsets.symmetric(vertical: 5.0),
           child: new Column(
             children: <Widget>[
