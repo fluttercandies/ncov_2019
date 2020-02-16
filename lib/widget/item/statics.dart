@@ -123,7 +123,7 @@ class Statics extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             new Visibility(
-              visible: model.label != '传染源',
+              visible: model.label != '病毒',
               child: new Space(),
             ),
             new SizedBox(
