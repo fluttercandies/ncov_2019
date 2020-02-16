@@ -33,6 +33,7 @@ class StatisticsModel {
   int createTime;
   String remark5;
   String dailyPic;
+  List<dynamic> dailyPics;
   String remark4;
   int id;
   String countRemark;
@@ -60,6 +61,7 @@ class StatisticsModel {
     this.createTime,
     this.remark5,
     this.dailyPic,
+    this.dailyPics,
     this.remark4,
     this.id,
     this.countRemark,
@@ -98,6 +100,7 @@ class StatisticsModel {
     note1 = json['note1'];
     note3 = json['note3'];
     note2 = json['note2'];
+    dailyPics = json['dailyPics'];
   }
 
   Map<String, dynamic> toJson() {

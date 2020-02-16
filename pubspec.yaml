@@ -1,7 +1,7 @@
 name: ncov_2019
 description: A new Flutter project.
 
-version: 0.0.9+9
+version: 0.0.10+10
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
