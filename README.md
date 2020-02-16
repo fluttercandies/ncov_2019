@@ -38,11 +38,11 @@ IOS:
 # 使用须知
 * cached_network_image
 
-在`pubspec.yaml`文件中，关于flutter版本使用`cached_network_image`插件问题，默认使用any，
+在`pubspec.yaml`文件中，关于flutter版本使用`cached_network_image`插件问题，默认使用2.0.0，
 因为你们刚安装上flutter为最新版本flutter。
 ```yaml
-#  cached_network_image: ^1.1.1 # 1.9.0左右flutter版本的用这个
-  cached_network_image: any # 2.0.0左右flutter版本直接用any
+#  cached_network_image: 1.1.1 # 1.9.0左右flutter版本的用这个
+  cached_network_image: 2.0.0 # 2.0.0左右flutter版本直接用这个
 ```
 
 # 使用教程
