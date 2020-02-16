@@ -33,7 +33,7 @@ class RumorCard extends StatelessWidget {
               fontWeight: FontWeight.w600,
               color: Colors.white,
             ),
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
           new Container(
