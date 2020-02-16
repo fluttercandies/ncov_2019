@@ -116,9 +116,11 @@ class _RumorPageState extends State<RumorPage>
             new Visibility(
               visible: listNoEmpty(statisticsModel?.dailyPics),
               child: new Column(
-                children: statisticsModel.dailyPics.map((pics) {
-                  return new CachedNetworkImage(imageUrl: pics);
-                }).toList(),
+                children: listNoEmpty(statisticsModel?.dailyPics)
+                    ? statisticsModel.dailyPics.map((pics) {
+                        return new CachedNetworkImage(imageUrl: pics);
+                      }).toList()
+                    : [],
               ),
             ),
             new Space(),
