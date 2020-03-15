@@ -1,0 +1,6 @@
+module device_info {
+  umbrella header "device_info-umbrella.h"
+
+  export *
+  module * { export * }
+}

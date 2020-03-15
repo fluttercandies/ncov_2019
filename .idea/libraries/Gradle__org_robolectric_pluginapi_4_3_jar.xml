@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: org.robolectric:pluginapi:4.3@jar" type="AndroidModuleLibraryType">
+    <CLASSES>
+      <root url="jar:///usr/local/Cellar/gradle/5.6.4/caches/modules-2/files-2.1/org.robolectric/pluginapi/4.3/128acea3aed3bbe36f8fde865f3a26b920237718/pluginapi-4.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

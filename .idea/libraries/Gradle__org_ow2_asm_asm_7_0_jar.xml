@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: org.ow2.asm:asm:7.0@jar" type="AndroidModuleLibraryType">
+    <CLASSES>
+      <root url="jar:///usr/local/Cellar/gradle/5.6.4/caches/modules-2/files-2.1/org.ow2.asm/asm/7.0/d74d4ba0dee443f68fb2dcb7fcdb945a2cd89912/asm-7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,6 @@
+module package_info {
+  umbrella header "package_info-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,1 @@
+../../../../.symlinks/plugins/package_info/ios/Classes/PackageInfoPlugin.h

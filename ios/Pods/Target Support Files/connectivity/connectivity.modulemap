@@ -1,0 +1,6 @@
+module connectivity {
+  umbrella header "connectivity-umbrella.h"
+
+  export *
+  module * { export * }
+}

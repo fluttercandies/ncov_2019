@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/connectivity-0.4.6/android/connectivity.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/connectivity-0.4.6/android/connectivity.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/device_info-0.4.0+1/android/device_info.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/device_info-0.4.0+1/android/device_info.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/nav_router-0.0.2/android/nav_router.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/nav_router-0.0.2/android/nav_router.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/open_file-2.1.1/android/open_file.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/open_file-2.1.1/android/open_file.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.4.0+6/android/package_info.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/package_info-0.4.0+6/android/package_info.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.5.0/android/path_provider.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.5.0/android/path_provider.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.2+2/android/shared_preferences.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/shared_preferences-0.5.2+2/android/shared_preferences.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.8/android/sqflite.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/sqflite-1.1.8/android/sqflite.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.2.7/android/url_launcher.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/url_launcher-5.2.7/android/url_launcher.iml" />
+      <module fileurl="file://$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter-0.3.12/android/webview_flutter.iml" filepath="$USER_HOME$/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter-0.3.12/android/webview_flutter.iml" />
+    </modules>
+  </component>
+</project>

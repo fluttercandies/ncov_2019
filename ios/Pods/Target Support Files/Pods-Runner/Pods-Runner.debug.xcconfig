@@ -1,0 +1,13 @@
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/../.symlinks/flutter/ios"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/FMDB" "${PODS_ROOT}/Headers/Public/Reachability" "${PODS_ROOT}/Headers/Public/connectivity" "${PODS_ROOT}/Headers/Public/device_info" "${PODS_ROOT}/Headers/Public/nav_router" "${PODS_ROOT}/Headers/Public/open_file" "${PODS_ROOT}/Headers/Public/package_info" "${PODS_ROOT}/Headers/Public/path_provider" "${PODS_ROOT}/Headers/Public/shared_preferences" "${PODS_ROOT}/Headers/Public/sqflite" "${PODS_ROOT}/Headers/Public/url_launcher" "${PODS_ROOT}/Headers/Public/webview_flutter"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/FMDB" "${PODS_CONFIGURATION_BUILD_DIR}/Reachability" "${PODS_CONFIGURATION_BUILD_DIR}/connectivity" "${PODS_CONFIGURATION_BUILD_DIR}/device_info" "${PODS_CONFIGURATION_BUILD_DIR}/nav_router" "${PODS_CONFIGURATION_BUILD_DIR}/open_file" "${PODS_CONFIGURATION_BUILD_DIR}/package_info" "${PODS_CONFIGURATION_BUILD_DIR}/path_provider" "${PODS_CONFIGURATION_BUILD_DIR}/shared_preferences" "${PODS_CONFIGURATION_BUILD_DIR}/sqflite" "${PODS_CONFIGURATION_BUILD_DIR}/url_launcher" "${PODS_CONFIGURATION_BUILD_DIR}/webview_flutter"
+OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_ROOT}/Headers/Public/connectivity/connectivity.modulemap" -fmodule-map-file="${PODS_ROOT}/Headers/Public/path_provider/path_provider.modulemap" -fmodule-map-file="${PODS_ROOT}/Headers/Public/sqflite/sqflite.modulemap" -fmodule-map-file="${PODS_ROOT}/Headers/Public/url_launcher/url_launcher.modulemap"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"FMDB" -l"Reachability" -l"connectivity" -l"device_info" -l"nav_router" -l"open_file" -l"package_info" -l"path_provider" -l"shared_preferences" -l"sqflite" -l"sqlite3" -l"url_launcher" -l"webview_flutter" -framework "Flutter" -framework "SystemConfiguration"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS -Xcc -fmodule-map-file="${PODS_ROOT}/Headers/Public/connectivity/connectivity.modulemap" -Xcc -fmodule-map-file="${PODS_ROOT}/Headers/Public/path_provider/path_provider.modulemap" -Xcc -fmodule-map-file="${PODS_ROOT}/Headers/Public/sqflite/sqflite.modulemap" -Xcc -fmodule-map-file="${PODS_ROOT}/Headers/Public/url_launcher/url_launcher.modulemap"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
+USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES

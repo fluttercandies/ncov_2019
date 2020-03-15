@@ -1,0 +1,1 @@
+../../../../.symlinks/plugins/connectivity/ios/Classes/ConnectivityPlugin.h

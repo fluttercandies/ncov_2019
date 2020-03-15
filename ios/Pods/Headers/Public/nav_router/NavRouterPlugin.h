@@ -1,0 +1,1 @@
+../../../../.symlinks/plugins/nav_router/ios/Classes/NavRouterPlugin.h
