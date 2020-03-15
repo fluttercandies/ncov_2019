@@ -14,7 +14,6 @@ var _id = 0;
 enum RequestType { GET, POST }
 
 class ReqModel {
-
   // 请求url路径
   String url() => null;
 
@@ -116,7 +115,9 @@ class ReqModel {
 
       if (response != null) {
         print('HTTP_REQUEST_URL::[$id]::$httpUrl');
-        if (mapNoEmpty(params)) print('HTTP_REQUEST_BODY::[$id]::$params');
+        if (mapNoEmpty(params)) {
+          print('HTTP_REQUEST_BODY::[$id]::${json.encode(params)}');
+        }
         print('HTTP_RESPONSE_BODY::[$id]::${json.encode(response.data)}');
         return response.data;
       }
