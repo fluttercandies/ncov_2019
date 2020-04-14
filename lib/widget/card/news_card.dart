@@ -15,12 +15,12 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double createTimeDouble =
-        strNoEmpty('${model?.createTime}') ? model.createTime / 1000 : 0;
-    int createTime = int.parse('${stringDisposeWithDouble(createTimeDouble)}');
+    double pubDateDouble =
+        strNoEmpty('${model?.pubDate}') ? model.pubDate / 1000 : 0;
+    int pubDate = int.parse('${stringDisposeWithDouble(pubDateDouble)}');
 
     bool isTimeStr =
-        DateTime.now().millisecondsSinceEpoch - model?.createTime < 43200000;
+        DateTime.now().millisecondsSinceEpoch - model?.pubDate < 43200000;
     return Container(
       padding: padding,
       alignment: Alignment.centerLeft,
@@ -81,7 +81,7 @@ class NewsCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 new Text(
-                  '时间：${isTimeStr ? model?.pubDateStr ?? '未知' : formatTimeStampToString(createTime) ?? '未知'}',
+                  '时间：${isTimeStr ? model?.pubDateStr ?? '未知' : formatTimeStampToString(pubDate) ?? '未知'}',
                   style: TextStyle(color: Color(0xff999999), fontSize: 13.0),
                 ),
                 new Text(
