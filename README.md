@@ -116,4 +116,6 @@ Flutter交流QQ群：[874592746](https://jq.qq.com/?_wv=1027&k=5coTYqE)
 
 Flutter交流微信群：
 
-![](https://user-gold-cdn.xitu.io/2020/1/27/16fe2f50329f799c?w=512&h=512&f=jpeg&s=49463)
+<img src="assets/git/left_group.png" height="200" width="210" style="zoom:30%;" />
+
+[上图无法显示点我](http://www.flutterj.com/left_group.png)
