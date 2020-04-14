@@ -16,7 +16,12 @@ void main() async {
   await StorageManager.init();
 
   /// App入口
-  runApp(new MyApp());
+  runApp(
+    new ColorFiltered(
+      colorFilter: ColorFilter.mode(Colors.transparent, BlendMode.color),
+      child: new MyApp(),
+    ),
+  );
 
   /// 自定义报错页面
   ErrorWidget.builder = (FlutterErrorDetails flutterErrorDetails) {
