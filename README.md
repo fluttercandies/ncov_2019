@@ -15,8 +15,6 @@
 
 # 项目相关文章
 
-* [项目起因及描述看这里](https://juejin.im/post/5e2c6a6e51882526b757cf2e)
-* [本项目介绍文章](https://juejin.im/post/5e2c8ba3e51d4557e86e9b8c)
 * [Flutter Candies又添一成员，为抗击疫情贡献一份技术力量](https://mp.weixin.qq.com/s?__biz=MzAxMTI4MTkwNQ==&mid=2650829796&idx=1&sn=7811875471dcabd0cfec788adc27306a&chksm=80b7a77ab7c02e6cfc9726c61be31cbd616c5593d0b9388776f15fd255ccc619be7df38341b3&mpshare=1&scene=23&srcid&sharer_sharetime=1582430519570&sharer_shareid=bdfd1967c1c7dae7e61a030ea5b2b235%23rd)
 
 
@@ -100,14 +98,6 @@ q1deMacBook-Pro:~ q1$ flutter doctor -v
 
 • No issues found!
 ```
-
-# flutter内推
-
-地区：广东省，湖南省，上海，杭州；
-
-有以上地区招flutter的大厂可以内推我，我农村来的，贼能吃苦。
-
-微信号：zonggeyl_com (q1)
 
 # 意见反馈
 如果大家有好的意见或者有好的设计图的话可以群内找我。
