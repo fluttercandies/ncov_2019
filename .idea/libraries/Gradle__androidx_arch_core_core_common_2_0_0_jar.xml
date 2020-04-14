@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: androidx.arch.core:core-common:2.0.0@jar" type="AndroidModuleLibraryType">
-    <CLASSES>
-      <root url="jar:///usr/local/Cellar/gradle/5.6.4/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.0.0/bb21b9a11761451b51624ac428d1f1bb5deeac38/core-common-2.0.0.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

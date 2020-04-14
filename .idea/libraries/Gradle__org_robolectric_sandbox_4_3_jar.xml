@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: org.robolectric:sandbox:4.3@jar" type="AndroidModuleLibraryType">
-    <CLASSES>
-      <root url="jar:///usr/local/Cellar/gradle/5.6.4/caches/modules-2/files-2.1/org.robolectric/sandbox/4.3/2302e406aebab5f6843dbf6c2f21952fa86ec26f/sandbox-4.3.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

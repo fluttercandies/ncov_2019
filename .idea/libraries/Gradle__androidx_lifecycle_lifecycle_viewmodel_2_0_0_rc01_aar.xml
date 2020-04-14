@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: androidx.lifecycle:lifecycle-viewmodel:2.0.0-rc01@aar" type="AndroidModuleLibraryType">
-    <CLASSES>
-      <root url="jar:///usr/local/Cellar/gradle/5.6.4/caches/transforms-1/files-1.1/lifecycle-viewmodel-2.0.0-rc01.aar/fcec69eaf7c8b4e03b1adca0545a2afd/jars/classes.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

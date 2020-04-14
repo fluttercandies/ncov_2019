@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: androidx.legacy:legacy-support-v4:1.0.0@aar" type="AndroidModuleLibraryType">
-    <CLASSES>
-      <root url="jar:///usr/local/Cellar/gradle/5.6.4/caches/transforms-1/files-1.1/legacy-support-v4-1.0.0.aar/fa273945b5eca17392b7580a12a92d8c/jars/classes.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

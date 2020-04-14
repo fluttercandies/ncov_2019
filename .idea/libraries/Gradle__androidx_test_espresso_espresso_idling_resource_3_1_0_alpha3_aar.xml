@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: androidx.test.espresso:espresso-idling-resource:3.1.0-alpha3@aar" type="AndroidModuleLibraryType">
-    <CLASSES>
-      <root url="jar:///usr/local/Cellar/gradle/5.6.4/caches/transforms-1/files-1.1/espresso-idling-resource-3.1.0-alpha3.aar/af55a65c9222293e1ab3aea74443d03f/jars/classes.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: org.robolectric:plugins-maven-dependency-resolver:4.3@jar" type="AndroidModuleLibraryType">
-    <CLASSES>
-      <root url="jar:///usr/local/Cellar/gradle/5.6.4/caches/modules-2/files-2.1/org.robolectric/plugins-maven-dependency-resolver/4.3/b1ea126cb80dbba0c2947be9234bbe2877ce2a09/plugins-maven-dependency-resolver-4.3.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
