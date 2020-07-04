@@ -98,7 +98,7 @@ class ReqModel {
           );
         }
       } else {
-        if (mapNoEmpty(params) && formData.isNotEmpty) {
+        if (mapNoEmpty(params) && formData != null) {
           response = await _client.post(
             url,
             data: formData ?? params,
