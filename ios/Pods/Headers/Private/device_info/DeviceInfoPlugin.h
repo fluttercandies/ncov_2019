@@ -1,1 +1,0 @@
-../../../../.symlinks/plugins/device_info/ios/Classes/DeviceInfoPlugin.h
