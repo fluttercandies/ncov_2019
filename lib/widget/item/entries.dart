@@ -26,6 +26,7 @@ class Entries extends StatelessWidget {
                 padding: EdgeInsets.only(top: 2.0),
                 child: new Text(
                   '${model.configName}',
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 12.0, color: mainTextColor),
                 ),
               ),
