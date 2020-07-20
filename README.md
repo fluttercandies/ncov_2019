@@ -1,3 +1,9 @@
+[![GitHub stars](https://img.shields.io/github/stars/fluttercandies/ncov_2019)](https://github.com/fluttercandies/ncov_2019/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/fluttercandies/ncov_2019)](https://github.com/fluttercandies/ncov_2019/network)
+[![GitHub issues](https://img.shields.io/github/issues/fluttercandies/ncov_2019)](https://github.com/fluttercandies/ncov_2019/issues) 
+
+> 如果产生其他依赖无法编译的问题，可以尝试将`pubspec.yaml`中的`dependencies`中的所有依赖的"^"去掉，重新编译尝试。
+
 # nCoV_2019
 
 获取新肺炎实时动态App，支持Android和IOS。
