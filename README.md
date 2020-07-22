@@ -117,3 +117,14 @@ Flutter交流微信群：
 <img src="assets/git/left_group.png" height="200" width="210" style="zoom:30%;" />
 
 [上图无法显示点我](http://www.flutterj.com/left_group.png)
+
+
+### LICENSE
+```
+fluttercandies/ncov_2019 is licensed under the
+Apache License 2.0
+
+A permissive license whose main conditions require preservation of copyright and license notices. 
+Contributors provide an express grant of patent rights. 
+Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+```
